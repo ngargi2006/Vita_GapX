@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analyze Genome — Vita-Gap</title>
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+        <span>Vita-Gap</span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/analyze.html" class="nav-link active">Analyze</a></li>
+        <li><a href="/library.html" class="nav-link">Pathway Library</a></li>
+        <li><a href="/methods.html" class="nav-link">Methods</a></li>
+        <li><a href="/api.html" class="nav-link">API</a></li>
+        <li><a href="/about.html" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="theme-toggle-btn" class="btn-icon" aria-label="Toggle theme"></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="wizard-card">
+      <!-- Steps Indicator -->
+      <div class="wizard-steps">
+        <div class="wizard-step active" data-step="1">
+          <span>1</span> Organism
+        </div>
+        <div class="wizard-step" data-step="2">
+          <span>2</span> Input Data
+        </div>
+        <div class="wizard-step" data-step="3">
+          <span>3</span> Vitamins
+        </div>
+        <div class="wizard-step" data-step="4">
+          <span>4</span> Review & Run
+        </div>
+      </div>
+
+      <form id="analyze-form" class="wizard-body">
+        <!-- Step 1: Organism & Scope -->
+        <div class="wizard-panel" data-panel="1">
+          <h2 style="font-size:1.3rem; margin-bottom:0.5rem;">Step 1 · Organism & Biological Scope</h2>
+          <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.5rem;">
+            Provide genome provenance and specify whether your input is a partial candidate list (open world) or a complete annotation (closed world).
+          </p>
+
+          <div class="form-group">
+            <label class="form-label" for="organism">Organism Name / Sample Identifier</label>
+            <input type="text" id="organism" class="form-control" placeholder="e.g. Bacillus subtilis 168, Gut MAG 42" required>
+            <div class="form-hint">Used for report attribution, citations, and auto-generated Methods text.</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div class="form-group">
+              <label class="form-label" for="naming">Gene Naming Convention</label>
+              <select id="naming" class="form-control">
+                <option value="generic" selected>Generic / KEGG Orthology (Recommended)</option>
+                <option value="ecoli">Escherichia coli-like tradition</option>
+                <option value="bsubtilis">Bacillus subtilis-like tradition</option>
+                <option value="other">Other / Custom</option>
+              </select>
+              <div class="form-hint">Resolves ambiguous gene names like <code>ribA</code>, <code>ribC</code>, and <code>ribE</code>.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="genome_type">Genome Assembly Type</label>
+              <select id="genome_type" class="form-control">
+                <option value="complete">Complete / Closed Genome</option>
+                <option value="draft">Draft Assembly (Contigs / Scaffolds)</option>
+                <option value="mag">Metagenome-Assembled Genome (MAG)</option>
+                <option value="unknown" selected>Unknown / Unspecified</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div class="form-group">
+              <label class="form-label" for="completeness">Estimated Genome Completeness (%)</label>
+              <input type="number" id="completeness" class="form-control" placeholder="e.g. 98.5 (CheckM / CheckM2)" min="0" max="100" step="0.1">
+              <div class="form-hint">Used to calibrate evidence score for missing genes in draft genomes and MAGs.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="scope">Input Scope (World Assumption)</label>
+              <select id="scope" class="form-control">
+                <option value="open" selected>Partial Gene List (Open World: missing ≠ absent)</option>
+                <option value="closed">Complete Annotation (Closed World: missing = absent)</option>
+              </select>
+              <div class="form-hint">Under open world, missing genes do not penalize the bacterium into an Auxotroph call.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Input Annotations -->
+        <div class="wizard-panel" data-panel="2" style="display:none;">
+          <h2 style="font-size:1.3rem; margin-bottom:0.5rem;">Step 2 · Enter Gene Annotations</h2>
+          <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.5rem;">
+            Paste gene symbols, KO identifiers, EC numbers, or upload annotation outputs directly from bioinformatics pipelines.
+          </p>
+
+          <div class="form-group">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <label class="form-label" for="data" style="margin-bottom:0;">Gene Annotations</label>
+              <span id="format-preview-badge" class="badge-scope-open" style="font-size:0.75rem;">Auto-detect</span>
+            </div>
+            <textarea id="data" class="form-control" placeholder="e.g. RibA -> RibB -> RibD -> RibH&#10;or paste lines of K01497, K02858, K11752, K00794..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <div id="dropzone" class="dropzone">
+              <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin:0 auto 0.5rem; color:var(--text-muted);">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+              </svg>
+              <div style="font-weight:600; font-size:0.95rem; margin-bottom:0.25rem;">
+                Click to browse or drag & drop annotation file
+              </div>
+              <div style="font-size:0.8rem; color:var(--text-muted);">
+                Supports eggNOG-mapper (<code>.emapper.annotations</code>), Prokka (<code>.tsv</code>), KofamScan (<code>-f mapper</code> or detail TSV), BlastKOALA (<code>user_ko.txt</code>), or CSV (Max 5 MB).
+              </div>
+              <input type="file" id="file-upload" style="display:none;" accept=".txt,.tsv,.csv,.annotations">
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="format">Override Format Detection (Optional)</label>
+            <select id="format" class="form-control">
+              <option value="auto" selected>Auto-detect format (Recommended)</option>
+              <option value="plain_list">Plain List (Symbols / KOs / Arrows)</option>
+              <option value="ko_list">KO List (One K##### per line)</option>
+              <option value="kofamscan">KofamScan (Detail TSV or mapper)</option>
+              <option value="koala">BlastKOALA / GhostKOALA</option>
+              <option value="eggnog">eggNOG-mapper v2</option>
+              <option value="prokka">Prokka TSV</option>
+              <option value="csv">Generic CSV</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Step 3: Vitamin Selection -->
+        <div class="wizard-panel" data-panel="3" style="display:none;">
+          <h2 style="font-size:1.3rem; margin-bottom:0.5rem;">Step 3 · Target Vitamins</h2>
+          <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.5rem;">
+            Select which vitamin biosynthesis pathways to evaluate. All 9 bacterial vitamins are analyzed by default.
+          </p>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.75rem; margin-bottom:1.5rem;">
+            <label class="form-control" style="display:flex; align-items:center; gap:0.75rem; cursor:pointer;">
+              <input type="checkbox" name="vitamins" value="B1" checked>
+              <div><strong>B1</strong> · Thiamine (TPP)</div>
+            </label>
+            <label class="form-control" style="display:flex; align-items:center; gap:0.75rem; cursor:pointer;">
+              <input type="checkbox" name="vitamins" value="B2" checked>
+              <div><strong>B2</strong> · Riboflavin (FMN/FAD)</div>
+            </label>
+            <label class="form-control" style="display:flex; align-items:center; gap:0.75rem; cursor:pointer;">
+              <input type="checkbox" name="vitamins" value="B3" checked>
+              <div><strong>B3</strong> · Niacin / NAD</div>
+            </label>
+            <label class="form-control" style="display:flex; align-items:center; gap:0.75rem; cursor:pointer;">
+              <input type="checkbox" name="vitamins" value="B5" checked>
+              <div><strong>B5</strong> · Pantothenate (CoA)</div>
+            </label>
+            <label class="form-control" style="display:flex; align-items:center; gap:0.75rem; cursor:pointer;">
+              <input type="checkbox" name="vitamins" value="B6" checked>
+              <div><strong>B6</strong> · Pyridoxal 5'-phosphate (PLP)</div>
+            </label>
+            <label class="form-control" style="display:flex; align-items:center; gap:0.75rem; cursor:pointer;">
+              <input type="checkbox" name="vitamins" value="B7" checked>
+              <div><strong>B7</strong> · Biotin</div>
+            </label>
+            <label class="form-control" style="display:flex; align-items:center; gap:0.75rem; cursor:pointer;">
+              <input type="checkbox" name="vitamins" value="B9" checked>
+              <div><strong>B9</strong> · Folate / THF</div>
+            </label>
+            <label class="form-control" style="display:flex; align-items:center; gap:0.75rem; cursor:pointer;">
+              <input type="checkbox" name="vitamins" value="B12" checked>
+              <div><strong>B12</strong> · Cobamide / Cobalamin</div>
+            </label>
+            <label class="form-control" style="display:flex; align-items:center; gap:0.75rem; cursor:pointer;">
+              <input type="checkbox" name="vitamins" value="K2" checked>
+              <div><strong>K2</strong> · Menaquinone</div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 4: Review & Run -->
+        <div class="wizard-panel" data-panel="4" style="display:none;">
+          <h2 style="font-size:1.3rem; margin-bottom:0.5rem;">Step 4 · Review & Execute</h2>
+          <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.5rem;">
+            Ready to perform pathway gap analysis and phenotype classification.
+          </p>
+
+          <div style="background:var(--bg-subtle); padding:1.25rem; border-radius:var(--radius-md); border:1px solid var(--border-color); margin-bottom:1.5rem;">
+            <h3 style="font-size:1rem; font-weight:700; margin-bottom:0.5rem;">Analysis Configuration Summary</h3>
+            <ul style="padding-left:1.25rem; font-size:0.9rem; color:var(--text-secondary); line-height:1.7;">
+              <li><strong>Committed Step Weighting:</strong> Key steps (weight 2.0), Normal steps (weight 1.0), Low specificity (0.5).</li>
+              <li><strong>Known Biological Gaps:</strong> ArPP phosphatase, PanE/IlvC, and dihydroneopterin phosphatase excluded from penalties.</li>
+              <li><strong>Phenotype Classes:</strong> Prototroph, Probable Prototroph, Blocked, Precursor-dependent, Auxotroph, Not Required.</li>
+            </ul>
+          </div>
+
+          <div class="form-group">
+            <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.9rem; cursor:pointer;">
+              <input type="checkbox" id="store_input">
+              <span>Store my raw input on server (optional: enables exact annotation recovery in shared reports)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Wizard Navigation Buttons -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border-color);">
+          <button type="button" id="btn-prev" class="btn btn-outline" style="display:none;">
+            ← Previous
+          </button>
+          <div style="margin-left:auto; display:flex; gap:0.75rem;">
+            <button type="button" id="btn-next" class="btn btn-primary">
+              Next →
+            </button>
+            <button type="submit" id="btn-submit" class="btn btn-primary" style="display:none;">
+              Run Gap Analysis
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Ambiguity Resolver Modal -->
+  <div id="ambiguity-modal" class="modal-backdrop">
+    <div class="modal">
+      <h3 class="modal-title">Ambiguity Resolver</h3>
+      <p style="font-size:0.9rem; color:var(--text-secondary);">
+        Some gene symbols in your input have divergent metabolic roles across bacterial traditions. Please confirm the intended biological enzyme:
+      </p>
+
+      <div id="ambiguity-list" style="max-height:360px; overflow-y:auto; margin:1rem 0;"></div>
+
+      <div style="display:flex; justify-content:flex-end; gap:0.75rem; margin-top:1.5rem;">
+        <button type="button" id="btn-apply-resolutions" class="btn btn-primary">
+          Confirm Resolutions & Continue
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initTheme } from '/assets/js/ui.js';
+    import { AnalyzeWizard } from '/assets/js/analyze.js';
+
+    initTheme();
+    new AnalyzeWizard();
+  </script>
+</body>
+</html>

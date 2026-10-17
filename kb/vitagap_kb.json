@@ -1,0 +1,3460 @@
+{
+    "kb_version": "1.0.0",
+    "kegg_release": "Release 112.0/Oct 2026",
+    "vitamins": [
+        {
+            "code": "B1",
+            "name": "Thiamine",
+            "active_forms": "Thiamine pyrophosphate (TPP)",
+            "summary": "Essential cofactor for central carbon metabolism (pyruvate dehydrogenase, alpha-ketoglutarate dehydrogenase, transketolase). Formed by coupling of thiazole and pyrimidine moieties followed by phosphorylation.",
+            "loci_k": 2,
+            "pathways": [
+                {
+                    "code": "B1_TYR",
+                    "name": "Thiamine biosynthesis (tyrosine/ThiH route)",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00127"
+                    ],
+                    "loci_k": 2,
+                    "steps": [
+                        {
+                            "code": "B1.THISF",
+                            "branch": "thiazole",
+                            "name": "Sulfur carrier protein complex (ThiF+ThiS)",
+                            "ec": "2.7.7.73",
+                            "kind": "low",
+                            "options": [
+                                "K03148+K03154"
+                            ],
+                            "note": "Low specificity; shares homology with moeB/moaD molybdenum systems."
+                        },
+                        {
+                            "code": "B1.THII",
+                            "branch": "thiazole",
+                            "name": "Thiamine biosynthesis sulfur carrier adenylyltransferase (ThiI)",
+                            "ec": "2.8.1.4",
+                            "kind": "low",
+                            "options": [
+                                "K03151"
+                            ],
+                            "note": "Shares role in tRNA thiolation."
+                        },
+                        {
+                            "code": "B1.THIH",
+                            "branch": "thiazole",
+                            "name": "Thiazole synthase activating enzyme (ThiH)",
+                            "ec": "1.19.6.1",
+                            "kind": "normal",
+                            "options": [
+                                "K03150"
+                            ]
+                        },
+                        {
+                            "code": "B1.THIG",
+                            "branch": "thiazole",
+                            "name": "Thiazole synthase (ThiG)",
+                            "ec": "2.8.1.10",
+                            "kind": "key",
+                            "options": [
+                                "K03149"
+                            ]
+                        },
+                        {
+                            "code": "B1.THIC",
+                            "branch": "pyrimidine",
+                            "name": "Phosphomethylpyrimidine synthase (ThiC)",
+                            "ec": "4.1.99.17",
+                            "kind": "key",
+                            "options": [
+                                "K03147"
+                            ]
+                        },
+                        {
+                            "code": "B1.THID",
+                            "branch": "pyrimidine",
+                            "name": "Hydroxymethylpyrimidine kinase / phosphomethylpyrimidine kinase (ThiD)",
+                            "ec": "2.7.1.49 2.7.4.7",
+                            "kind": "normal",
+                            "options": [
+                                "K00941",
+                                "K14153",
+                                "K21219"
+                            ]
+                        },
+                        {
+                            "code": "B1.THIE",
+                            "branch": "merge",
+                            "name": "Thiamine-phosphate diphosphorylase / TMP synthase (ThiE)",
+                            "ec": "2.5.1.3",
+                            "kind": "key",
+                            "options": [
+                                "K00788",
+                                "K14153",
+                                "K21219",
+                                "K21220"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B1_GLY",
+                    "name": "Thiamine biosynthesis (glycine/ThiO route)",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00895"
+                    ],
+                    "loci_k": 2,
+                    "steps": [
+                        {
+                            "code": "B1.THISF",
+                            "branch": "thiazole",
+                            "name": "Sulfur carrier protein complex (ThiF+ThiS)",
+                            "ec": "2.7.7.73",
+                            "kind": "low",
+                            "options": [
+                                "K03148+K03154"
+                            ]
+                        },
+                        {
+                            "code": "B1.THII",
+                            "branch": "thiazole",
+                            "name": "Thiamine biosynthesis sulfur carrier (ThiI)",
+                            "ec": "2.8.1.4",
+                            "kind": "low",
+                            "options": [
+                                "K03151"
+                            ]
+                        },
+                        {
+                            "code": "B1.THIO",
+                            "branch": "thiazole",
+                            "name": "Glycine oxidase / thiazole activating enzyme (ThiO)",
+                            "ec": "1.4.3.19",
+                            "kind": "normal",
+                            "options": [
+                                "K03153"
+                            ]
+                        },
+                        {
+                            "code": "B1.TENI",
+                            "branch": "thiazole",
+                            "name": "Thiazole tautomerase (TenI)",
+                            "ec": "5.3.99.10",
+                            "kind": "normal",
+                            "options": [
+                                "K10810"
+                            ]
+                        },
+                        {
+                            "code": "B1.THIG",
+                            "branch": "thiazole",
+                            "name": "Thiazole synthase (ThiG)",
+                            "ec": "2.8.1.10",
+                            "kind": "key",
+                            "options": [
+                                "K03149"
+                            ]
+                        },
+                        {
+                            "code": "B1.THIC",
+                            "branch": "pyrimidine",
+                            "name": "Phosphomethylpyrimidine synthase (ThiC)",
+                            "ec": "4.1.99.17",
+                            "kind": "key",
+                            "options": [
+                                "K03147"
+                            ]
+                        },
+                        {
+                            "code": "B1.THID",
+                            "branch": "pyrimidine",
+                            "name": "Hydroxymethylpyrimidine kinase (ThiD)",
+                            "ec": "2.7.1.49 2.7.4.7",
+                            "kind": "normal",
+                            "options": [
+                                "K00941",
+                                "K14153",
+                                "K21219"
+                            ]
+                        },
+                        {
+                            "code": "B1.THIE",
+                            "branch": "merge",
+                            "name": "Thiamine-phosphate synthase (ThiE)",
+                            "ec": "2.5.1.3",
+                            "kind": "key",
+                            "options": [
+                                "K00788",
+                                "K14153",
+                                "K21219",
+                                "K21220"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B1_SALVAGE",
+                    "name": "Thiamine salvage pathway",
+                    "role": "salvage",
+                    "kegg_modules": [
+                        "M00899"
+                    ],
+                    "steps": [
+                        {
+                            "code": "B1.THIM",
+                            "name": "Hydroxyethylthiazole kinase (ThiM)",
+                            "ec": "2.7.1.50",
+                            "kind": "normal",
+                            "options": [
+                                "K00878"
+                            ]
+                        },
+                        {
+                            "code": "B1.THIK",
+                            "name": "Thiamine kinase (ThiK)",
+                            "ec": "2.7.1.89",
+                            "kind": "normal",
+                            "options": [
+                                "K07251"
+                            ]
+                        },
+                        {
+                            "code": "B1.TPK",
+                            "name": "Thiamine pyrophosphokinase (TPK1)",
+                            "ec": "2.7.6.2",
+                            "kind": "normal",
+                            "options": [
+                                "K00949"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B1_ACTIVATION",
+                    "name": "Thiamine monophosphate phosphorylation to TPP",
+                    "role": "activation",
+                    "steps": [
+                        {
+                            "code": "B1.THIL",
+                            "name": "Thiamine-monophosphate kinase (ThiL)",
+                            "ec": "2.7.4.16",
+                            "kind": "activation",
+                            "options": [
+                                "K00946"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B1_TRANSPORT",
+                    "name": "Thiamine / HMP / HET uptake systems",
+                    "role": "transport",
+                    "steps": [
+                        {
+                            "code": "B1.THIT",
+                            "name": "Thiamine ECF transporter (ThiT/YuaJ)",
+                            "kind": "optional",
+                            "options": [
+                                "K16789"
+                            ]
+                        },
+                        {
+                            "code": "B1.THIBPQ",
+                            "name": "Thiamine ABC transporter complex (ThiBPQ)",
+                            "kind": "optional",
+                            "options": [
+                                "K02064+K02063+K02062"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "rules": [
+                {
+                    "id": "B1.R1",
+                    "call": "PROTOTROPH",
+                    "if": {
+                        "any_of": [
+                            {
+                                "pathway": "B1_TYR",
+                                "completeness_gte": 0.85,
+                                "key_coverage_eq": 1
+                            },
+                            {
+                                "pathway": "B1_GLY",
+                                "completeness_gte": 0.85,
+                                "key_coverage_eq": 1
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "B1.R2",
+                    "call": "PRECURSOR_DEPENDENT",
+                    "reasons": [
+                        "Lacks ThiC pyrimidine synthesis but retains ThiG thiazole synthesis and ThiE coupling (HMP-dependent)"
+                    ],
+                    "if": {
+                        "absent": [
+                            "B1.THIC"
+                        ],
+                        "present": [
+                            "B1.THIG",
+                            "B1.THIE"
+                        ]
+                    }
+                },
+                {
+                    "id": "B1.R3",
+                    "call": "PRECURSOR_DEPENDENT",
+                    "reasons": [
+                        "Lacks ThiG thiazole synthesis but retains ThiC pyrimidine synthesis, ThiE coupling and ThiM salvage (HET-dependent)"
+                    ],
+                    "if": {
+                        "absent": [
+                            "B1.THIG"
+                        ],
+                        "present": [
+                            "B1.THIC",
+                            "B1.THIE",
+                            "B1.THIM"
+                        ]
+                    }
+                },
+                {
+                    "id": "B1.R4",
+                    "call": "PROBABLE_PROTOTROPH",
+                    "if": {
+                        "completeness_gte": 0.6,
+                        "key_missing_lte": 1,
+                        "any_of": [
+                            {
+                                "key_missing_lte": 0
+                            },
+                            {
+                                "missing_key_has_alternative": true
+                            },
+                            {
+                                "genome_incomplete": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "B1.R5",
+                    "call": "BLOCKED",
+                    "if": {
+                        "completeness_gte": 0.4,
+                        "key_missing_gte": 1
+                    }
+                },
+                {
+                    "id": "B1.R6",
+                    "call": "AUXOTROPH",
+                    "if": {
+                        "key_coverage_lte": 0.25,
+                        "scope": "closed"
+                    }
+                },
+                {
+                    "id": "B1.R7",
+                    "call": "NOT_ASSESSABLE",
+                    "if": {
+                        "scope": "open",
+                        "matched_steps_eq": 0
+                    }
+                },
+                {
+                    "id": "B1.R8",
+                    "call": "UNCERTAIN",
+                    "if": []
+                }
+            ],
+            "aliases": [
+                {
+                    "alias": "thiC",
+                    "ko": "K03147",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "thiD",
+                    "ko": "K00941",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "thiE",
+                    "ko": "K00788",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "thiF",
+                    "ko": "K03148",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "thiS",
+                    "ko": "K03154",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "thiG",
+                    "ko": "K03149",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "thiH",
+                    "ko": "K03150",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "thiI",
+                    "ko": "K03151",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "thiO",
+                    "ko": "K03153",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "tenI",
+                    "ko": "K10810",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "thiL",
+                    "ko": "K00946",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "thiM",
+                    "ko": "K00878",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "thiK",
+                    "ko": "K07251",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "thiT",
+                    "ko": "K16789",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "thiB",
+                    "ko": "K02064",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "thiP",
+                    "ko": "K02063",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "thiQ",
+                    "ko": "K02062",
+                    "naming": "generic"
+                }
+            ]
+        },
+        {
+            "code": "B2",
+            "name": "Riboflavin",
+            "active_forms": "FMN, FAD",
+            "summary": "Precursor of flavin mononucleotide (FMN) and flavin adenine dinucleotide (FAD), fundamental electron carriers in redox biology. Synthesized from GTP and ribulose 5-phosphate.",
+            "loci_k": 1,
+            "pathways": [
+                {
+                    "code": "B2_DENOVO",
+                    "name": "Riboflavin biosynthesis (bacteria)",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00125"
+                    ],
+                    "loci_k": 1,
+                    "steps": [
+                        {
+                            "code": "B2.GCH2",
+                            "branch": "pyrimidine",
+                            "name": "GTP cyclohydrolase II (RibA)",
+                            "ec": "3.5.4.25",
+                            "kind": "key",
+                            "options": [
+                                "K01497",
+                                "K14652"
+                            ],
+                            "note": "K14652 is the bifunctional RibBA enzyme common in Bacillus and Gram-positive bacteria."
+                        },
+                        {
+                            "code": "B2.DEAM",
+                            "branch": "pyrimidine",
+                            "name": "Pyrimidine deaminase (RibD)",
+                            "ec": "3.5.4.26",
+                            "kind": "normal",
+                            "options": [
+                                "K01498",
+                                "K11752"
+                            ],
+                            "note": "K11752 is the fused deaminase/reductase enzyme."
+                        },
+                        {
+                            "code": "B2.RED",
+                            "branch": "pyrimidine",
+                            "name": "Pyrimidine reductase (RibD)",
+                            "ec": "1.1.1.193",
+                            "kind": "normal",
+                            "options": [
+                                "K00082",
+                                "K11752"
+                            ]
+                        },
+                        {
+                            "code": "B2.PHOS",
+                            "branch": "pyrimidine",
+                            "name": "ArPP phosphatase",
+                            "ec": "3.1.3.104",
+                            "kind": "gap",
+                            "options": [
+                                "K22912",
+                                "K20860",
+                                "K20861",
+                                "K20862",
+                                "K21063",
+                                "K21064"
+                            ],
+                            "note": "Often performed by non-specific haloacid dehalogenase (HAD) phosphatases; never penalized."
+                        },
+                        {
+                            "code": "B2.DHBPS",
+                            "branch": "ribulose",
+                            "name": "DHBP synthase (RibB)",
+                            "ec": "4.1.99.12",
+                            "kind": "key",
+                            "options": [
+                                "K02858",
+                                "K14652"
+                            ],
+                            "note": "Fused in RibBA (K14652)."
+                        },
+                        {
+                            "code": "B2.LS",
+                            "branch": "merge",
+                            "name": "Lumazine synthase (RibH)",
+                            "ec": "2.5.1.78",
+                            "kind": "key",
+                            "options": [
+                                "K00794"
+                            ]
+                        },
+                        {
+                            "code": "B2.RS",
+                            "branch": "merge",
+                            "name": "Riboflavin synthase (RibE/RibC)",
+                            "ec": "2.5.1.9",
+                            "kind": "key",
+                            "options": [
+                                "K00793"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B2_ACTIVATION",
+                    "name": "Riboflavin activation to FMN and FAD",
+                    "role": "activation",
+                    "steps": [
+                        {
+                            "code": "B2.RFK",
+                            "name": "Riboflavin kinase",
+                            "ec": "2.7.1.26",
+                            "kind": "activation",
+                            "options": [
+                                "K11753",
+                                "K20884"
+                            ]
+                        },
+                        {
+                            "code": "B2.FADS",
+                            "name": "FMN adenylyltransferase / FAD synthetase",
+                            "ec": "2.7.7.2",
+                            "kind": "activation",
+                            "options": [
+                                "K11753",
+                                "K22949"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B2_TRANSPORT",
+                    "name": "Riboflavin uptake systems",
+                    "role": "transport",
+                    "steps": [
+                        {
+                            "code": "B2.T1",
+                            "name": "RibU/FmnP ECF transporter",
+                            "kind": "optional",
+                            "options": [
+                                "K23675"
+                            ]
+                        },
+                        {
+                            "code": "B2.T2",
+                            "name": "RfuABCD ABC transporter complex",
+                            "kind": "optional",
+                            "options": [
+                                "K23510+K23511+K23512+K23513"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "rules": [
+                {
+                    "id": "B2.R1",
+                    "call": "PROTOTROPH",
+                    "if": {
+                        "pathway": "B2_DENOVO",
+                        "completeness_gte": 0.85,
+                        "key_coverage_eq": 1
+                    }
+                },
+                {
+                    "id": "B2.R2",
+                    "call": "PROBABLE_PROTOTROPH",
+                    "if": {
+                        "pathway": "B2_DENOVO",
+                        "completeness_gte": 0.6,
+                        "key_missing_lte": 1,
+                        "any_of": [
+                            {
+                                "key_missing_lte": 0
+                            },
+                            {
+                                "missing_key_has_alternative": true
+                            },
+                            {
+                                "genome_incomplete": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "B2.R3",
+                    "call": "BLOCKED",
+                    "if": {
+                        "pathway": "B2_DENOVO",
+                        "completeness_gte": 0.4,
+                        "key_missing_gte": 1
+                    }
+                },
+                {
+                    "id": "B2.R4",
+                    "call": "AUXOTROPH",
+                    "if": {
+                        "pathway": "B2_DENOVO",
+                        "key_coverage_lte": 0.25,
+                        "scope": "closed"
+                    }
+                },
+                {
+                    "id": "B2.R5",
+                    "call": "NOT_ASSESSABLE",
+                    "if": {
+                        "scope": "open",
+                        "matched_steps_eq": 0
+                    }
+                },
+                {
+                    "id": "B2.R6",
+                    "call": "UNCERTAIN",
+                    "if": []
+                }
+            ],
+            "aliases": [
+                {
+                    "alias": "ribA",
+                    "ko": "K01497",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "ribA",
+                    "ko": "K14652",
+                    "naming": "bsubtilis"
+                },
+                {
+                    "alias": "ribBA",
+                    "ko": "K14652",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "ribB",
+                    "ko": "K02858",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "ribD",
+                    "ko": "K11752",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "ribH",
+                    "ko": "K00794",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "ribE",
+                    "ko": "K00793",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "ribE",
+                    "ko": "K00794",
+                    "naming": "ecoli",
+                    "verify": true
+                },
+                {
+                    "alias": "ribC",
+                    "ko": "K00793",
+                    "naming": "ecoli"
+                },
+                {
+                    "alias": "ribC",
+                    "ko": "K11753",
+                    "naming": "bsubtilis"
+                },
+                {
+                    "alias": "ribF",
+                    "ko": "K11753",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "ribU",
+                    "ko": "K23675",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "fmnP",
+                    "ko": "K23675",
+                    "naming": "generic"
+                }
+            ]
+        },
+        {
+            "code": "B3",
+            "name": "Niacin / NAD",
+            "active_forms": "NAD+, NADP+",
+            "summary": "Nicotinamide adenine dinucleotide (NAD) is the principal hydride donor/acceptor in cellular bioenergetics. Synthesized de novo via aspartate or tryptophan, or reclaimed via salvage.",
+            "loci_k": 2,
+            "pathways": [
+                {
+                    "code": "B3_ASP",
+                    "name": "NAD biosynthesis (aspartate route)",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00115"
+                    ],
+                    "loci_k": 2,
+                    "steps": [
+                        {
+                            "code": "B3.NADB",
+                            "name": "L-aspartate oxidase (NadB)",
+                            "ec": "1.4.3.16",
+                            "kind": "key",
+                            "options": [
+                                "K00278",
+                                "K06989"
+                            ]
+                        },
+                        {
+                            "code": "B3.NADA",
+                            "name": "Quinolinate synthase (NadA)",
+                            "ec": "2.5.1.72",
+                            "kind": "key",
+                            "options": [
+                                "K03517"
+                            ]
+                        },
+                        {
+                            "code": "B3.NADC",
+                            "name": "Nicotinate-nucleotide pyrophosphorylase / QAPRTase (NadC)",
+                            "ec": "2.4.2.19",
+                            "kind": "key",
+                            "options": [
+                                "K00767"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B3_TRP",
+                    "name": "NAD biosynthesis (tryptophan/kynurenine route)",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00912"
+                    ],
+                    "loci_k": 2,
+                    "steps": [
+                        {
+                            "code": "B3.TDO",
+                            "name": "Tryptophan 2,3-dioxygenase / Indoleamine 2,3-dioxygenase",
+                            "ec": "1.13.11.11 1.13.11.52",
+                            "kind": "normal",
+                            "options": [
+                                "K00453",
+                                "K00463"
+                            ]
+                        },
+                        {
+                            "code": "B3.KFA",
+                            "name": "Arylformamidase (kynurenine formamidase)",
+                            "ec": "3.5.1.9",
+                            "kind": "normal",
+                            "options": [
+                                "K01432",
+                                "K14263",
+                                "K07130"
+                            ]
+                        },
+                        {
+                            "code": "B3.KMO",
+                            "name": "Kynurenine 3-monooxygenase",
+                            "ec": "1.14.13.9",
+                            "kind": "normal",
+                            "options": [
+                                "K00486"
+                            ]
+                        },
+                        {
+                            "code": "B3.KYN",
+                            "name": "Kynureninase",
+                            "ec": "3.7.1.3",
+                            "kind": "normal",
+                            "options": [
+                                "K01556"
+                            ]
+                        },
+                        {
+                            "code": "B3.HAO",
+                            "name": "3-hydroxyanthranilate 3,4-dioxygenase",
+                            "ec": "1.13.11.6",
+                            "kind": "key",
+                            "options": [
+                                "K00452"
+                            ]
+                        },
+                        {
+                            "code": "B3.NADC",
+                            "name": "Nicotinate-nucleotide pyrophosphorylase (NadC)",
+                            "ec": "2.4.2.19",
+                            "kind": "key",
+                            "options": [
+                                "K00767"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B3_ACTIVATION",
+                    "name": "NaMN to NAD",
+                    "role": "activation",
+                    "steps": [
+                        {
+                            "code": "B3.NADD",
+                            "name": "Nicotinate-nucleotide adenylyltransferase (NadD/NadM)",
+                            "ec": "2.7.7.18 2.7.7.1",
+                            "kind": "activation",
+                            "options": [
+                                "K00969",
+                                "K06210"
+                            ]
+                        },
+                        {
+                            "code": "B3.NADE",
+                            "name": "NAD+ synthetase (NadE)",
+                            "ec": "6.3.1.5 6.3.5.1",
+                            "kind": "activation",
+                            "options": [
+                                "K01916",
+                                "K01950"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B3_SALVAGE",
+                    "name": "Nicotinamide / Nicotinate / Nicotinamide riboside salvage",
+                    "role": "salvage",
+                    "steps": [
+                        {
+                            "code": "B3.PNCA",
+                            "name": "Nicotinamidase (PncA)",
+                            "ec": "3.5.1.19",
+                            "kind": "normal",
+                            "options": [
+                                "K01440"
+                            ]
+                        },
+                        {
+                            "code": "B3.PNCB",
+                            "name": "Nicotinate phosphoribosyltransferase (PncB)",
+                            "ec": "6.3.4.21",
+                            "kind": "normal",
+                            "options": [
+                                "K00763"
+                            ]
+                        },
+                        {
+                            "code": "B3.NADV",
+                            "name": "Nicotinamide phosphoribosyltransferase (NadV)",
+                            "ec": "2.4.2.12",
+                            "kind": "normal",
+                            "options": [
+                                "K03462"
+                            ]
+                        },
+                        {
+                            "code": "B3.NADR",
+                            "name": "Bifunctional NMN adenylyltransferase / ribosylnicotinamide kinase (NadR)",
+                            "ec": "2.7.1.22 2.7.7.1",
+                            "kind": "normal",
+                            "options": [
+                                "K03698"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B3_TRANSPORT",
+                    "name": "Nicotinamide riboside transporter (PnuC)",
+                    "role": "transport",
+                    "steps": [
+                        {
+                            "code": "B3.PNUC",
+                            "name": "Nicotinamide mononucleotide / riboside uptake permease (PnuC)",
+                            "kind": "optional",
+                            "options": [
+                                "K03623"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "rules": [
+                {
+                    "id": "B3.R1",
+                    "call": "PROTOTROPH",
+                    "if": {
+                        "any_of": [
+                            {
+                                "pathway": "B3_ASP",
+                                "completeness_gte": 0.85,
+                                "key_coverage_eq": 1
+                            },
+                            {
+                                "pathway": "B3_TRP",
+                                "completeness_gte": 0.85,
+                                "key_coverage_eq": 1
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "B3.R2",
+                    "call": "PRECURSOR_DEPENDENT",
+                    "reasons": [
+                        "Lacks quinolinate de novo route but retains NadD, NadE, and salvage enzyme PncB/NadV/NadR (niacin/NR-dependent)"
+                    ],
+                    "if": {
+                        "absent": [
+                            "B3.NADA",
+                            "B3.NADB"
+                        ],
+                        "present": [
+                            "B3.NADD",
+                            "B3.NADE"
+                        ],
+                        "any_of": [
+                            {
+                                "present": [
+                                    "B3.PNCB"
+                                ]
+                            },
+                            {
+                                "present": [
+                                    "B3.NADV"
+                                ]
+                            },
+                            {
+                                "present": [
+                                    "B3.NADR"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "B3.R3",
+                    "call": "PROBABLE_PROTOTROPH",
+                    "if": {
+                        "completeness_gte": 0.6,
+                        "key_missing_lte": 1,
+                        "any_of": [
+                            {
+                                "key_missing_lte": 0
+                            },
+                            {
+                                "missing_key_has_alternative": true
+                            },
+                            {
+                                "genome_incomplete": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "B3.R4",
+                    "call": "BLOCKED",
+                    "if": {
+                        "completeness_gte": 0.4,
+                        "key_missing_gte": 1
+                    }
+                },
+                {
+                    "id": "B3.R5",
+                    "call": "AUXOTROPH",
+                    "if": {
+                        "key_coverage_lte": 0.25,
+                        "scope": "closed"
+                    }
+                },
+                {
+                    "id": "B3.R6",
+                    "call": "NOT_ASSESSABLE",
+                    "if": {
+                        "scope": "open",
+                        "matched_steps_eq": 0
+                    }
+                },
+                {
+                    "id": "B3.R7",
+                    "call": "UNCERTAIN",
+                    "if": []
+                }
+            ],
+            "aliases": [
+                {
+                    "alias": "nadA",
+                    "ko": "K03517",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "nadB",
+                    "ko": "K00278",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "nadC",
+                    "ko": "K00767",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "nadD",
+                    "ko": "K00969",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "nadE",
+                    "ko": "K01916",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "pncA",
+                    "ko": "K01440",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "pncB",
+                    "ko": "K00763",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "nadV",
+                    "ko": "K03462",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "nadR",
+                    "ko": "K03698",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "pnuC",
+                    "ko": "K03623",
+                    "naming": "generic"
+                }
+            ]
+        },
+        {
+            "code": "B5",
+            "name": "Pantothenate",
+            "active_forms": "Coenzyme A (CoA), 4'-phosphopantetheine",
+            "summary": "Precursor of Coenzyme A, the universal carrier of activated acyl groups. Formed by the condensation of pantoate and beta-alanine.",
+            "loci_k": 1,
+            "pathways": [
+                {
+                    "code": "B5_DENOVO",
+                    "name": "Pantothenate biosynthesis",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00119"
+                    ],
+                    "loci_k": 1,
+                    "steps": [
+                        {
+                            "code": "B5.ILVE",
+                            "branch": "pantoate",
+                            "name": "Branched-chain amino acid aminotransferase (IlvE)",
+                            "ec": "2.6.1.42",
+                            "kind": "low",
+                            "options": [
+                                "K00826"
+                            ],
+                            "note": "Shared with branched amino acid biosynthesis."
+                        },
+                        {
+                            "code": "B5.PANB",
+                            "branch": "pantoate",
+                            "name": "3-methyl-2-oxobutanoate hydroxymethyltransferase (PanB)",
+                            "ec": "2.1.2.11",
+                            "kind": "key",
+                            "options": [
+                                "K00606"
+                            ]
+                        },
+                        {
+                            "code": "B5.PANE",
+                            "branch": "pantoate",
+                            "name": "2-dehydropantoate 2-reductase (PanE)",
+                            "ec": "1.1.1.169",
+                            "kind": "gap",
+                            "options": [
+                                "K00077"
+                            ],
+                            "note": "Ketol-acid reductoisomerase IlvC (K00053) often substitutes; never penalized."
+                        },
+                        {
+                            "code": "B5.PAND",
+                            "branch": "beta_alanine",
+                            "name": "Aspartate 1-decarboxylase (PanD)",
+                            "ec": "4.1.1.11",
+                            "kind": "normal",
+                            "options": [
+                                "K01579"
+                            ]
+                        },
+                        {
+                            "code": "B5.PANC",
+                            "branch": "merge",
+                            "name": "Pantoate-beta-alanine ligase / Pantothenate synthetase (PanC)",
+                            "ec": "6.3.2.1",
+                            "kind": "key",
+                            "options": [
+                                "K01918",
+                                "K13799"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B5_ACTIVATION",
+                    "name": "Pantothenate to Coenzyme A",
+                    "role": "activation",
+                    "kegg_modules": [
+                        "M00120"
+                    ],
+                    "steps": [
+                        {
+                            "code": "B5.PANK",
+                            "name": "Pantothenate kinase (PanK / CoaA)",
+                            "ec": "2.7.1.33",
+                            "kind": "activation",
+                            "options": [
+                                "K00867",
+                                "K03525",
+                                "K09680",
+                                "K01947"
+                            ]
+                        },
+                        {
+                            "code": "B5.COABC",
+                            "name": "Phosphopantothenoylcysteine decarboxylase / synthetase (CoaBC)",
+                            "ec": "6.3.2.5 4.1.1.36",
+                            "kind": "activation",
+                            "options": [
+                                "K13038",
+                                "K01922+K01598",
+                                "K21977+K01598"
+                            ]
+                        },
+                        {
+                            "code": "B5.COAD",
+                            "name": "Phosphopantetheine adenylyltransferase (CoaD)",
+                            "ec": "2.7.7.3",
+                            "kind": "activation",
+                            "options": [
+                                "K00954",
+                                "K02201"
+                            ]
+                        },
+                        {
+                            "code": "B5.COAE",
+                            "name": "Dephospho-CoA kinase (CoaE)",
+                            "ec": "2.7.1.24",
+                            "kind": "activation",
+                            "options": [
+                                "K00859",
+                                "K02318"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B5_TRANSPORT",
+                    "name": "Pantothenate uptake",
+                    "role": "transport",
+                    "steps": [
+                        {
+                            "code": "B5.PANF",
+                            "name": "Sodium-dependent pantothenate symporter (PanF)",
+                            "kind": "optional",
+                            "options": [
+                                "K03453"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "rules": [
+                {
+                    "id": "B5.R1",
+                    "call": "PROTOTROPH",
+                    "if": {
+                        "pathway": "B5_DENOVO",
+                        "completeness_gte": 0.85,
+                        "key_coverage_eq": 1
+                    }
+                },
+                {
+                    "id": "B5.R2",
+                    "call": "PROBABLE_PROTOTROPH",
+                    "if": {
+                        "pathway": "B5_DENOVO",
+                        "completeness_gte": 0.6,
+                        "key_missing_lte": 1,
+                        "any_of": [
+                            {
+                                "key_missing_lte": 0
+                            },
+                            {
+                                "missing_key_has_alternative": true
+                            },
+                            {
+                                "genome_incomplete": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "B5.R3",
+                    "call": "BLOCKED",
+                    "if": {
+                        "pathway": "B5_DENOVO",
+                        "completeness_gte": 0.4,
+                        "key_missing_gte": 1
+                    }
+                },
+                {
+                    "id": "B5.R4",
+                    "call": "AUXOTROPH",
+                    "if": {
+                        "pathway": "B5_DENOVO",
+                        "key_coverage_lte": 0.25,
+                        "scope": "closed"
+                    }
+                },
+                {
+                    "id": "B5.R5",
+                    "call": "NOT_ASSESSABLE",
+                    "if": {
+                        "scope": "open",
+                        "matched_steps_eq": 0
+                    }
+                },
+                {
+                    "id": "B5.R6",
+                    "call": "UNCERTAIN",
+                    "if": []
+                }
+            ],
+            "aliases": [
+                {
+                    "alias": "panB",
+                    "ko": "K00606",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "panC",
+                    "ko": "K01918",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "panD",
+                    "ko": "K01579",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "panE",
+                    "ko": "K00077",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "ilvE",
+                    "ko": "K00826",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "panF",
+                    "ko": "K03453",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "panK",
+                    "ko": "K00867",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "coaA",
+                    "ko": "K00867",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "coaBC",
+                    "ko": "K13038",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "coaD",
+                    "ko": "K00954",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "coaE",
+                    "ko": "K00859",
+                    "naming": "generic"
+                }
+            ]
+        },
+        {
+            "code": "B6",
+            "name": "Pyridoxal 5'-phosphate",
+            "active_forms": "Pyridoxal 5'-phosphate (PLP)",
+            "summary": "Principal coenzyme for transaminases, decarboxylases, and racemases. Synthesized either via DXP-dependent pathway (E. coli-like) or DXP-independent PdxST complex (Bacillus-like).",
+            "loci_k": 2,
+            "pathways": [
+                {
+                    "code": "B6_DXP",
+                    "name": "PLP biosynthesis (DXP-dependent / PdxA-PdxJ route)",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00124"
+                    ],
+                    "loci_k": 2,
+                    "steps": [
+                        {
+                            "code": "B6.EPD",
+                            "name": "D-erythrose 4-phosphate dehydrogenase (Epd)",
+                            "ec": "1.2.1.72",
+                            "kind": "gap",
+                            "options": [
+                                "K03472"
+                            ],
+                            "note": "Can be substituted by glyceraldehyde 3-phosphate dehydrogenase (GapA); never penalized."
+                        },
+                        {
+                            "code": "B6.PDXB",
+                            "name": "4-phosphoerythronate dehydrogenase (PdxB)",
+                            "ec": "1.1.1.290",
+                            "kind": "normal",
+                            "options": [
+                                "K03473"
+                            ]
+                        },
+                        {
+                            "code": "B6.SERC",
+                            "name": "Phosphoserine aminotransferase (SerC)",
+                            "ec": "2.6.1.52",
+                            "kind": "low",
+                            "options": [
+                                "K00831"
+                            ],
+                            "note": "Low specificity; primary role in serine biosynthesis."
+                        },
+                        {
+                            "code": "B6.PDXA",
+                            "name": "4-hydroxythreonine-4-phosphate dehydrogenase (PdxA)",
+                            "ec": "1.1.1.262",
+                            "kind": "key",
+                            "options": [
+                                "K00097"
+                            ]
+                        },
+                        {
+                            "code": "B6.PDXJ",
+                            "name": "Pyridoxine 5'-phosphate synthase (PdxJ)",
+                            "ec": "2.6.99.2",
+                            "kind": "key",
+                            "options": [
+                                "K03474"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B6_DXP_INDEP",
+                    "name": "PLP biosynthesis (DXP-independent / PdxST route)",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00916"
+                    ],
+                    "loci_k": 1,
+                    "steps": [
+                        {
+                            "code": "B6.PDXST",
+                            "name": "Pyridoxal 5'-phosphate synthase complex (PdxS + PdxT)",
+                            "ec": "4.3.3.6",
+                            "kind": "key",
+                            "options": [
+                                "K06215+K08681"
+                            ],
+                            "note": "Complex of glutaminase (PdxT) and synthase (PdxS). Both subunits required."
+                        }
+                    ]
+                },
+                {
+                    "code": "B6_ACTIVATION",
+                    "name": "Pyridoxine 5'-phosphate oxidation to PLP",
+                    "role": "activation",
+                    "steps": [
+                        {
+                            "code": "B6.PDXH",
+                            "name": "Pyridoxamine 5'-phosphate oxidase (PdxH)",
+                            "ec": "1.4.3.5",
+                            "kind": "activation",
+                            "options": [
+                                "K00275"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B6_SALVAGE",
+                    "name": "Pyridoxine / Pyridoxal / Pyridoxamine salvage kinases",
+                    "role": "salvage",
+                    "steps": [
+                        {
+                            "code": "B6.PDXK",
+                            "name": "Pyridoxine kinase (PdxK / PdxY)",
+                            "ec": "2.7.1.35",
+                            "kind": "normal",
+                            "options": [
+                                "K00868",
+                                "K07010"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "rules": [
+                {
+                    "id": "B6.R1",
+                    "call": "PROTOTROPH",
+                    "if": {
+                        "any_of": [
+                            {
+                                "pathway": "B6_DXP",
+                                "completeness_gte": 0.85,
+                                "key_coverage_eq": 1
+                            },
+                            {
+                                "pathway": "B6_DXP_INDEP",
+                                "completeness_gte": 0.85,
+                                "key_coverage_eq": 1
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "B6.R2",
+                    "call": "PROBABLE_PROTOTROPH",
+                    "if": {
+                        "completeness_gte": 0.6,
+                        "key_missing_lte": 1,
+                        "any_of": [
+                            {
+                                "key_missing_lte": 0
+                            },
+                            {
+                                "missing_key_has_alternative": true
+                            },
+                            {
+                                "genome_incomplete": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "B6.R3",
+                    "call": "BLOCKED",
+                    "if": {
+                        "completeness_gte": 0.4,
+                        "key_missing_gte": 1
+                    }
+                },
+                {
+                    "id": "B6.R4",
+                    "call": "AUXOTROPH",
+                    "if": {
+                        "key_coverage_lte": 0.25,
+                        "scope": "closed"
+                    }
+                },
+                {
+                    "id": "B6.R5",
+                    "call": "NOT_ASSESSABLE",
+                    "if": {
+                        "scope": "open",
+                        "matched_steps_eq": 0
+                    }
+                },
+                {
+                    "id": "B6.R6",
+                    "call": "UNCERTAIN",
+                    "if": []
+                }
+            ],
+            "aliases": [
+                {
+                    "alias": "pdxA",
+                    "ko": "K00097",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "pdxB",
+                    "ko": "K03473",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "pdxJ",
+                    "ko": "K03474",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "pdxH",
+                    "ko": "K00275",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "pdxS",
+                    "ko": "K06215",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "pdxT",
+                    "ko": "K08681",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "epd",
+                    "ko": "K03472",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "serC",
+                    "ko": "K00831",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "pdxK",
+                    "ko": "K00868",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "pdxY",
+                    "ko": "K07010",
+                    "naming": "generic"
+                }
+            ]
+        },
+        {
+            "code": "B7",
+            "name": "Biotin",
+            "active_forms": "Biotin, Biocytin",
+            "summary": "Cofactor for carboxylase enzymes. Composed of an imidazolidone ring, tetrahydrothiophene ring, and valeric acid side chain. Formed by pimeloyl precursor supply followed by core assembly.",
+            "loci_k": 1,
+            "pathways": [
+                {
+                    "code": "B7_DENOVO_BIOCH",
+                    "name": "Biotin biosynthesis (BioC-BioH pimeloyl route)",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00123",
+                        "M00572"
+                    ],
+                    "loci_k": 1,
+                    "steps": [
+                        {
+                            "code": "B7.BIOC",
+                            "branch": "pimeloyl",
+                            "name": "Malonyl-ACP O-methyltransferase (BioC)",
+                            "ec": "2.1.1.197",
+                            "kind": "normal",
+                            "options": [
+                                "K02169"
+                            ]
+                        },
+                        {
+                            "code": "B7.BIOH",
+                            "branch": "pimeloyl",
+                            "name": "Pimeloyl-ACP methyl ester esterase (BioH/BioG/BioZ/BioV)",
+                            "ec": "3.1.1.85",
+                            "kind": "normal",
+                            "options": [
+                                "K02170",
+                                "K09789",
+                                "K19560",
+                                "K19561"
+                            ]
+                        },
+                        {
+                            "code": "B7.BIOF",
+                            "branch": "core",
+                            "name": "8-amino-7-oxononanoate synthase (BioF)",
+                            "ec": "2.3.1.47",
+                            "kind": "key",
+                            "options": [
+                                "K00652"
+                            ]
+                        },
+                        {
+                            "code": "B7.BIOA",
+                            "branch": "core",
+                            "name": "Adenosylmethionine-8-amino-7-oxononanoate transaminase (BioA/BioK/BioU)",
+                            "ec": "2.6.1.62",
+                            "kind": "key",
+                            "options": [
+                                "K00833",
+                                "K19563",
+                                "K25570",
+                                "K19562"
+                            ]
+                        },
+                        {
+                            "code": "B7.BIOD",
+                            "branch": "core",
+                            "name": "Dethiobiotin synthetase (BioD)",
+                            "ec": "6.3.3.3",
+                            "kind": "key",
+                            "options": [
+                                "K01935",
+                                "K19562"
+                            ]
+                        },
+                        {
+                            "code": "B7.BIOB",
+                            "branch": "core",
+                            "name": "Biotin synthase (BioB)",
+                            "ec": "2.8.1.6",
+                            "kind": "key",
+                            "options": [
+                                "K01012"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B7_DENOVO_BIOI",
+                    "name": "Biotin biosynthesis (BioI cytochrome P450 pimeloyl route)",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00123",
+                        "M00573"
+                    ],
+                    "loci_k": 1,
+                    "steps": [
+                        {
+                            "code": "B7.BIOI",
+                            "branch": "pimeloyl",
+                            "name": "Cytochrome P450 acyl-ACP monooxygenase (BioI)",
+                            "ec": "1.14.15.12",
+                            "kind": "normal",
+                            "options": [
+                                "K16593"
+                            ]
+                        },
+                        {
+                            "code": "B7.BIOF",
+                            "branch": "core",
+                            "name": "8-amino-7-oxononanoate synthase (BioF)",
+                            "ec": "2.3.1.47",
+                            "kind": "key",
+                            "options": [
+                                "K00652"
+                            ]
+                        },
+                        {
+                            "code": "B7.BIOA",
+                            "branch": "core",
+                            "name": "7,8-diaminopelargonate transaminase (BioA)",
+                            "ec": "2.6.1.62",
+                            "kind": "key",
+                            "options": [
+                                "K00833",
+                                "K19563",
+                                "K25570",
+                                "K19562"
+                            ]
+                        },
+                        {
+                            "code": "B7.BIOD",
+                            "branch": "core",
+                            "name": "Dethiobiotin synthetase (BioD)",
+                            "ec": "6.3.3.3",
+                            "kind": "key",
+                            "options": [
+                                "K01935",
+                                "K19562"
+                            ]
+                        },
+                        {
+                            "code": "B7.BIOB",
+                            "branch": "core",
+                            "name": "Biotin synthase (BioB)",
+                            "ec": "2.8.1.6",
+                            "kind": "key",
+                            "options": [
+                                "K01012"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B7_DENOVO_BIOW",
+                    "name": "Biotin biosynthesis (BioW pimelate-CoA ligase route)",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00123",
+                        "M00577"
+                    ],
+                    "loci_k": 1,
+                    "steps": [
+                        {
+                            "code": "B7.BIOW",
+                            "branch": "pimeloyl",
+                            "name": "Pimelate--CoA ligase (BioW)",
+                            "ec": "6.2.1.14",
+                            "kind": "normal",
+                            "options": [
+                                "K01906"
+                            ]
+                        },
+                        {
+                            "code": "B7.BIOF",
+                            "branch": "core",
+                            "name": "8-amino-7-oxononanoate synthase (BioF)",
+                            "ec": "2.3.1.47",
+                            "kind": "key",
+                            "options": [
+                                "K00652"
+                            ]
+                        },
+                        {
+                            "code": "B7.BIOA",
+                            "branch": "core",
+                            "name": "7,8-diaminopelargonate transaminase (BioA)",
+                            "ec": "2.6.1.62",
+                            "kind": "key",
+                            "options": [
+                                "K00833",
+                                "K19563",
+                                "K25570",
+                                "K19562"
+                            ]
+                        },
+                        {
+                            "code": "B7.BIOD",
+                            "branch": "core",
+                            "name": "Dethiobiotin synthetase (BioD)",
+                            "ec": "6.3.3.3",
+                            "kind": "key",
+                            "options": [
+                                "K01935",
+                                "K19562"
+                            ]
+                        },
+                        {
+                            "code": "B7.BIOB",
+                            "branch": "core",
+                            "name": "Biotin synthase (BioB)",
+                            "ec": "2.8.1.6",
+                            "kind": "key",
+                            "options": [
+                                "K01012"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B7_ACTIVATION",
+                    "name": "Biotin-protein ligase",
+                    "role": "activation",
+                    "steps": [
+                        {
+                            "code": "B7.BIRA",
+                            "name": "Biotin--[acetyl-CoA-carboxylase] ligase (BirA)",
+                            "ec": "6.3.4.15",
+                            "kind": "activation",
+                            "options": [
+                                "K03524"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B7_TRANSPORT",
+                    "name": "Biotin transport systems",
+                    "role": "transport",
+                    "steps": [
+                        {
+                            "code": "B7.BIOY",
+                            "name": "Biotin ECF transporter S-component (BioY)",
+                            "kind": "optional",
+                            "options": [
+                                "K03523"
+                            ]
+                        },
+                        {
+                            "code": "B7.BIOMN",
+                            "name": "Biotin ECF transporter A/T modules (BioM+BioN)",
+                            "kind": "optional",
+                            "options": [
+                                "K16784+K16783"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "rules": [
+                {
+                    "id": "B7.R1",
+                    "call": "PROTOTROPH",
+                    "if": {
+                        "any_of": [
+                            {
+                                "pathway": "B7_DENOVO_BIOCH",
+                                "completeness_gte": 0.85,
+                                "key_coverage_eq": 1
+                            },
+                            {
+                                "pathway": "B7_DENOVO_BIOI",
+                                "completeness_gte": 0.85,
+                                "key_coverage_eq": 1
+                            },
+                            {
+                                "pathway": "B7_DENOVO_BIOW",
+                                "completeness_gte": 0.85,
+                                "key_coverage_eq": 1
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "B7.R2",
+                    "call": "PROBABLE_PROTOTROPH",
+                    "reasons": [
+                        "Core biotin assembly genes (BioF, BioA, BioD, BioB) are present; pimeloyl supply may use an unannotated or alternative route."
+                    ],
+                    "if": {
+                        "present": [
+                            "B7.BIOF",
+                            "B7.BIOA",
+                            "B7.BIOD",
+                            "B7.BIOB"
+                        ]
+                    }
+                },
+                {
+                    "id": "B7.R3",
+                    "call": "PRECURSOR_DEPENDENT",
+                    "reasons": [
+                        "Lacks early biotin genes but retains BioB (desthiobiotin-dependent)"
+                    ],
+                    "if": {
+                        "absent": [
+                            "B7.BIOF",
+                            "B7.BIOA"
+                        ],
+                        "present": [
+                            "B7.BIOB"
+                        ]
+                    }
+                },
+                {
+                    "id": "B7.R4",
+                    "call": "BLOCKED",
+                    "if": {
+                        "completeness_gte": 0.4,
+                        "key_missing_gte": 1
+                    }
+                },
+                {
+                    "id": "B7.R5",
+                    "call": "AUXOTROPH",
+                    "if": {
+                        "key_coverage_lte": 0.25,
+                        "scope": "closed"
+                    }
+                },
+                {
+                    "id": "B7.R6",
+                    "call": "NOT_ASSESSABLE",
+                    "if": {
+                        "scope": "open",
+                        "matched_steps_eq": 0
+                    }
+                },
+                {
+                    "id": "B7.R7",
+                    "call": "UNCERTAIN",
+                    "if": []
+                }
+            ],
+            "aliases": [
+                {
+                    "alias": "bioA",
+                    "ko": "K00833",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "bioB",
+                    "ko": "K01012",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "bioC",
+                    "ko": "K02169",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "bioD",
+                    "ko": "K01935",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "bioF",
+                    "ko": "K00652",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "bioH",
+                    "ko": "K02170",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "bioI",
+                    "ko": "K16593",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "bioW",
+                    "ko": "K01906",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "birA",
+                    "ko": "K03524",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "bioY",
+                    "ko": "K03523",
+                    "naming": "generic"
+                }
+            ]
+        },
+        {
+            "code": "B9",
+            "name": "Folate / THF",
+            "active_forms": "Tetrahydrofolate (THF), 5-methyl-THF, 10-formyl-THF",
+            "summary": "Crucial cofactor transferring one-carbon units in purine, thymidylate, methionine, and pantothenate synthesis. Requires pterin moiety, p-aminobenzoate (pABA), and glutamate.",
+            "loci_k": 2,
+            "pathways": [
+                {
+                    "code": "B9_DENOVO",
+                    "name": "Tetrahydrofolate biosynthesis",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00126"
+                    ],
+                    "loci_k": 2,
+                    "steps": [
+                        {
+                            "code": "B9.FOLE",
+                            "branch": "pterin",
+                            "name": "GTP cyclohydrolase I (FolE / FolE2)",
+                            "ec": "3.5.4.16",
+                            "kind": "key",
+                            "options": [
+                                "K01495",
+                                "K09007",
+                                "K22391"
+                            ]
+                        },
+                        {
+                            "code": "B9.DHNTP",
+                            "branch": "pterin",
+                            "name": "Dihydroneopterin triphosphate diphosphatase",
+                            "ec": "3.6.1.67",
+                            "kind": "gap",
+                            "options": [
+                                "K01077",
+                                "K01113",
+                                "K08310",
+                                "K19965"
+                            ],
+                            "note": "Often handled by unspecific Nudix hydrolases; never penalized."
+                        },
+                        {
+                            "code": "B9.FOLB",
+                            "branch": "pterin",
+                            "name": "Dihydroneopterin aldolase (FolB / PTPS-III)",
+                            "ec": "4.1.2.25",
+                            "kind": "normal",
+                            "options": [
+                                "K01633",
+                                "K22101",
+                                "K13940",
+                                "K13939"
+                            ]
+                        },
+                        {
+                            "code": "B9.FOLK",
+                            "branch": "pterin",
+                            "name": "2-amino-4-hydroxy-6-hydroxymethyldihydropteridine diphosphokinase (FolK)",
+                            "ec": "2.7.6.3",
+                            "kind": "key",
+                            "options": [
+                                "K00950",
+                                "K13940",
+                                "K13941",
+                                "K13939"
+                            ]
+                        },
+                        {
+                            "code": "B9.PABAB",
+                            "branch": "paba",
+                            "name": "4-amino-4-deoxychorismate synthase (PabA+PabB / PabAB)",
+                            "ec": "2.6.1.85",
+                            "kind": "key",
+                            "options": [
+                                "K01664+K01665",
+                                "K03342"
+                            ]
+                        },
+                        {
+                            "code": "B9.PABC",
+                            "branch": "paba",
+                            "name": "4-amino-4-deoxychorismate lyase (PabC)",
+                            "ec": "4.1.3.38",
+                            "kind": "normal",
+                            "options": [
+                                "K02619",
+                                "K03342"
+                            ]
+                        },
+                        {
+                            "code": "B9.FOLP",
+                            "branch": "merge",
+                            "name": "Dihydropteroate synthase (FolP)",
+                            "ec": "2.5.1.15",
+                            "kind": "key",
+                            "options": [
+                                "K00796",
+                                "K13941",
+                                "K13939"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B9_ACTIVATION",
+                    "name": "Dihydrofolate synthase and Dihydrofolate reductase",
+                    "role": "activation",
+                    "steps": [
+                        {
+                            "code": "B9.FOLC",
+                            "name": "Dihydrofolate synthase / Folylpolyglutamate synthase (FolC)",
+                            "ec": "6.3.2.12 6.3.2.17",
+                            "kind": "activation",
+                            "options": [
+                                "K11754",
+                                "K20457"
+                            ]
+                        },
+                        {
+                            "code": "B9.FOLA",
+                            "name": "Dihydrofolate reductase (FolA / FolM)",
+                            "ec": "1.5.1.3",
+                            "kind": "activation",
+                            "options": [
+                                "K00287",
+                                "K13998"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B9_TRANSPORT",
+                    "name": "Folate transporter",
+                    "role": "transport",
+                    "steps": [
+                        {
+                            "code": "B9.FOLT",
+                            "name": "Folate ECF transporter S-component (FolT)",
+                            "kind": "optional",
+                            "options": [
+                                "K16785"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "rules": [
+                {
+                    "id": "B9.R1",
+                    "call": "PROTOTROPH",
+                    "if": {
+                        "pathway": "B9_DENOVO",
+                        "completeness_gte": 0.85,
+                        "key_coverage_eq": 1
+                    }
+                },
+                {
+                    "id": "B9.R2",
+                    "call": "PRECURSOR_DEPENDENT",
+                    "reasons": [
+                        "Pterin branch and FolP present, but p-aminobenzoate (pABA) synthesis is absent (pABA-dependent)"
+                    ],
+                    "if": {
+                        "present": [
+                            "B9.FOLE",
+                            "B9.FOLP"
+                        ],
+                        "absent": [
+                            "B9.PABAB"
+                        ]
+                    }
+                },
+                {
+                    "id": "B9.R3",
+                    "call": "PROBABLE_PROTOTROPH",
+                    "if": {
+                        "pathway": "B9_DENOVO",
+                        "completeness_gte": 0.6,
+                        "key_missing_lte": 1,
+                        "any_of": [
+                            {
+                                "key_missing_lte": 0
+                            },
+                            {
+                                "missing_key_has_alternative": true
+                            },
+                            {
+                                "genome_incomplete": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "B9.R4",
+                    "call": "BLOCKED",
+                    "if": {
+                        "pathway": "B9_DENOVO",
+                        "completeness_gte": 0.4,
+                        "key_missing_gte": 1
+                    }
+                },
+                {
+                    "id": "B9.R5",
+                    "call": "AUXOTROPH",
+                    "if": {
+                        "pathway": "B9_DENOVO",
+                        "key_coverage_lte": 0.25,
+                        "scope": "closed"
+                    }
+                },
+                {
+                    "id": "B9.R6",
+                    "call": "NOT_ASSESSABLE",
+                    "if": {
+                        "scope": "open",
+                        "matched_steps_eq": 0
+                    }
+                },
+                {
+                    "id": "B9.R7",
+                    "call": "UNCERTAIN",
+                    "if": []
+                }
+            ],
+            "aliases": [
+                {
+                    "alias": "folE",
+                    "ko": "K01495",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "folB",
+                    "ko": "K01633",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "folK",
+                    "ko": "K00950",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "folP",
+                    "ko": "K00796",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "folC",
+                    "ko": "K11754",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "folA",
+                    "ko": "K00287",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "pabA",
+                    "ko": "K01664",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "pabB",
+                    "ko": "K01665",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "pabC",
+                    "ko": "K02619",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "folT",
+                    "ko": "K16785",
+                    "naming": "generic"
+                }
+            ]
+        },
+        {
+            "code": "B12",
+            "name": "Cobalamin / Cobamide",
+            "active_forms": "Adenosylcobalamin, Methylcobalamin",
+            "summary": "Most structurally complex vitamin, containing a cobalt-coordinated corrin ring. Synthesized via anaerobic or aerobic pathway, or salvaged from cobinamide and lower ligands.",
+            "loci_k": 2,
+            "pathways": [
+                {
+                    "code": "B12_ANAEROBIC",
+                    "name": "Cobalamin biosynthesis (anaerobic pathway)",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00924",
+                        "M00122"
+                    ],
+                    "loci_k": 2,
+                    "steps": [
+                        {
+                            "code": "B12.CYSG",
+                            "branch": "early",
+                            "name": "Uroporphyrinogen-III C-methyltransferase (CysG / CobA)",
+                            "ec": "2.1.1.107",
+                            "kind": "low",
+                            "options": [
+                                "K02302",
+                                "K02303+K02304",
+                                "K13542+K24866"
+                            ],
+                            "note": "Low specificity; shared with siroheme biosynthesis."
+                        },
+                        {
+                            "code": "B12.CBIK",
+                            "branch": "corrin",
+                            "name": "Cobaltochelatase (CbiK / CbiX)",
+                            "ec": "4.99.1.3",
+                            "kind": "key",
+                            "options": [
+                                "K02190",
+                                "K03795",
+                                "K22011"
+                            ]
+                        },
+                        {
+                            "code": "B12.CBIL",
+                            "branch": "corrin",
+                            "name": "Cobalt-precorrin-2 C20-methyltransferase (CbiL)",
+                            "ec": "2.1.1.130",
+                            "kind": "key",
+                            "options": [
+                                "K03394"
+                            ]
+                        },
+                        {
+                            "code": "B12.CBIH",
+                            "branch": "corrin",
+                            "name": "Cobalt-precorrin-3 C17-methyltransferase (CbiH)",
+                            "ec": "2.1.1.131",
+                            "kind": "key",
+                            "options": [
+                                "K05934",
+                                "K13541",
+                                "K21479"
+                            ]
+                        },
+                        {
+                            "code": "B12.CBIF",
+                            "branch": "corrin",
+                            "name": "Cobalt-precorrin-4 C11-methyltransferase (CbiF)",
+                            "ec": "2.1.1.271",
+                            "kind": "key",
+                            "options": [
+                                "K05936"
+                            ]
+                        },
+                        {
+                            "code": "B12.CBIG",
+                            "branch": "corrin",
+                            "name": "Cobalt-precorrin-5 hydrolase (CbiG)",
+                            "ec": "3.7.1.12",
+                            "kind": "key",
+                            "options": [
+                                "K02189",
+                                "K13541"
+                            ]
+                        },
+                        {
+                            "code": "B12.CBID",
+                            "branch": "corrin",
+                            "name": "Cobalt-precorrin-5 C1-methyltransferase (CbiD)",
+                            "ec": "2.1.1.195",
+                            "kind": "key",
+                            "options": [
+                                "K02188"
+                            ]
+                        },
+                        {
+                            "code": "B12.CBIJ",
+                            "branch": "corrin",
+                            "name": "Cobalt-precorrin-6A reductase (CbiJ)",
+                            "ec": "1.3.1.54",
+                            "kind": "key",
+                            "options": [
+                                "K05895"
+                            ]
+                        },
+                        {
+                            "code": "B12.CBIT",
+                            "branch": "corrin",
+                            "name": "Cobalt-precorrin-6B C15-methyltransferase / decarboxylase (CbiT+CbiE / CbiET)",
+                            "ec": "2.1.1.196",
+                            "kind": "key",
+                            "options": [
+                                "K02191+K03399",
+                                "K00595"
+                            ]
+                        },
+                        {
+                            "code": "B12.CBIC",
+                            "branch": "corrin",
+                            "name": "Cobalt-precorrin-8X methylmutase (CbiC)",
+                            "ec": "5.4.99.61",
+                            "kind": "key",
+                            "options": [
+                                "K06042"
+                            ]
+                        },
+                        {
+                            "code": "B12.CBIA",
+                            "branch": "corrin",
+                            "name": "Cobyrinate a,c-diamide synthase (CbiA)",
+                            "ec": "6.3.5.9 6.3.5.11",
+                            "kind": "key",
+                            "options": [
+                                "K02224"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBO",
+                            "branch": "late",
+                            "name": "Corrinoid adenosyltransferase (CobO / CobA)",
+                            "ec": "2.5.1.17",
+                            "kind": "normal",
+                            "options": [
+                                "K00798",
+                                "K19221"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBQ",
+                            "branch": "late",
+                            "name": "Adenosylcobyric acid synthase (CobQ / CbiP)",
+                            "ec": "6.3.5.10",
+                            "kind": "normal",
+                            "options": [
+                                "K02232"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBP",
+                            "branch": "late",
+                            "name": "Adenosylcobinamide-phosphate synthase (CobP / CbiB)",
+                            "ec": "2.7.8.26",
+                            "kind": "normal",
+                            "options": [
+                                "K02225",
+                                "K02227"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBU",
+                            "branch": "late",
+                            "name": "Adenosylcobinamide kinase / guanylyltransferase (CobU / CobP)",
+                            "ec": "2.7.1.156 2.7.7.62",
+                            "kind": "normal",
+                            "options": [
+                                "K02231"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBT",
+                            "branch": "late",
+                            "name": "Nicotinate-nucleotide--dimethylbenzimidazole phosphoribosyltransferase (CobT)",
+                            "ec": "2.4.2.21",
+                            "kind": "normal",
+                            "options": [
+                                "K00768"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBC",
+                            "branch": "late",
+                            "name": "Alpha-ribazole phosphatase (CobC / CobZ)",
+                            "ec": "3.1.3.73",
+                            "kind": "normal",
+                            "options": [
+                                "K02226",
+                                "K22316"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBS",
+                            "branch": "late",
+                            "name": "Cobalamin synthase (CobS)",
+                            "ec": "2.7.8.26",
+                            "kind": "key",
+                            "options": [
+                                "K02233"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B12_AEROBIC",
+                    "name": "Cobalamin biosynthesis (aerobic pathway)",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00925",
+                        "M00122"
+                    ],
+                    "loci_k": 2,
+                    "steps": [
+                        {
+                            "code": "B12.CYSG",
+                            "branch": "early",
+                            "name": "Uroporphyrinogen-III C-methyltransferase (CysG / CobA)",
+                            "ec": "2.1.1.107",
+                            "kind": "low",
+                            "options": [
+                                "K02302",
+                                "K02303+K02304",
+                                "K13542+K24866"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBI",
+                            "branch": "corrin",
+                            "name": "Precorrin-2 C20-methyltransferase (CobI)",
+                            "ec": "2.1.1.130",
+                            "kind": "key",
+                            "options": [
+                                "K03394",
+                                "K13540"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBG",
+                            "branch": "corrin",
+                            "name": "Precorrin-3B synthase (CobG)",
+                            "ec": "1.14.16.3",
+                            "kind": "key",
+                            "options": [
+                                "K02229"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBJ",
+                            "branch": "corrin",
+                            "name": "Precorrin-3B C17-methyltransferase (CobJ)",
+                            "ec": "2.1.1.131",
+                            "kind": "key",
+                            "options": [
+                                "K05934",
+                                "K13540",
+                                "K13541"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBM",
+                            "branch": "corrin",
+                            "name": "Precorrin-4 C11-methyltransferase (CobM)",
+                            "ec": "2.1.1.271",
+                            "kind": "key",
+                            "options": [
+                                "K05936"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBF",
+                            "branch": "corrin",
+                            "name": "Precorrin-5 C1-methyltransferase (CobF)",
+                            "ec": "2.1.1.152",
+                            "kind": "key",
+                            "options": [
+                                "K02228"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBK",
+                            "branch": "corrin",
+                            "name": "Precorrin-6A reductase (CobK)",
+                            "ec": "1.3.1.54",
+                            "kind": "key",
+                            "options": [
+                                "K05895"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBL",
+                            "branch": "corrin",
+                            "name": "Precorrin-6B methyltransferase / decarboxylase (CobL)",
+                            "ec": "2.1.1.196",
+                            "kind": "key",
+                            "options": [
+                                "K00595"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBH",
+                            "branch": "corrin",
+                            "name": "Precorrin-8X methylmutase (CobH)",
+                            "ec": "5.4.99.61",
+                            "kind": "key",
+                            "options": [
+                                "K06042"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBB",
+                            "branch": "corrin",
+                            "name": "Cobyrinic acid a,c-diamide synthase (CobB)",
+                            "ec": "6.3.5.9",
+                            "kind": "key",
+                            "options": [
+                                "K02224"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBNST",
+                            "branch": "corrin",
+                            "name": "Aerobic cobaltochelatase complex (CobN+CobS+CobT)",
+                            "ec": "6.6.1.2",
+                            "kind": "key",
+                            "options": [
+                                "K02230+K09882+K09883"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBO",
+                            "branch": "late",
+                            "name": "Corrinoid adenosyltransferase (CobO)",
+                            "ec": "2.5.1.17",
+                            "kind": "normal",
+                            "options": [
+                                "K00798",
+                                "K19221"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBQ",
+                            "branch": "late",
+                            "name": "Adenosylcobyric acid synthase (CobQ)",
+                            "ec": "6.3.5.10",
+                            "kind": "normal",
+                            "options": [
+                                "K02232"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBP",
+                            "branch": "late",
+                            "name": "Adenosylcobinamide-phosphate synthase (CobP)",
+                            "ec": "2.7.8.26",
+                            "kind": "normal",
+                            "options": [
+                                "K02225",
+                                "K02227"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBU",
+                            "branch": "late",
+                            "name": "Adenosylcobinamide kinase (CobU)",
+                            "ec": "2.7.1.156 2.7.7.62",
+                            "kind": "normal",
+                            "options": [
+                                "K02231"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBT",
+                            "branch": "late",
+                            "name": "DMB phosphoribosyltransferase (CobT)",
+                            "ec": "2.4.2.21",
+                            "kind": "normal",
+                            "options": [
+                                "K00768"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBC",
+                            "branch": "late",
+                            "name": "Alpha-ribazole phosphatase (CobC)",
+                            "ec": "3.1.3.73",
+                            "kind": "normal",
+                            "options": [
+                                "K02226",
+                                "K22316"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBS",
+                            "branch": "late",
+                            "name": "Cobalamin synthase (CobS)",
+                            "ec": "2.7.8.26",
+                            "kind": "key",
+                            "options": [
+                                "K02233"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B12_SALVAGE",
+                    "name": "Cobinamide salvage / nucleotide loop",
+                    "role": "salvage",
+                    "kegg_modules": [
+                        "M00122"
+                    ],
+                    "steps": [
+                        {
+                            "code": "B12.COBO",
+                            "name": "Corrinoid adenosyltransferase",
+                            "ec": "2.5.1.17",
+                            "kind": "normal",
+                            "options": [
+                                "K00798",
+                                "K19221"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBU",
+                            "name": "Adenosylcobinamide kinase / guanylyltransferase",
+                            "ec": "2.7.1.156",
+                            "kind": "normal",
+                            "options": [
+                                "K02231"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBT",
+                            "name": "DMB phosphoribosyltransferase",
+                            "ec": "2.4.2.21",
+                            "kind": "normal",
+                            "options": [
+                                "K00768"
+                            ]
+                        },
+                        {
+                            "code": "B12.COBS",
+                            "name": "Cobalamin synthase",
+                            "ec": "2.7.8.26",
+                            "kind": "key",
+                            "options": [
+                                "K02233"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B12_TRANSPORT",
+                    "name": "Cobalamin uptake system (BtuBFCD)",
+                    "role": "transport",
+                    "steps": [
+                        {
+                            "code": "B12.BTUFCD",
+                            "name": "BtuFCD ABC uptake complex",
+                            "kind": "optional",
+                            "options": [
+                                "K25034+K25027+K25028"
+                            ]
+                        },
+                        {
+                            "code": "B12.BTUB",
+                            "name": "TonB-dependent outer membrane transporter BtuB",
+                            "kind": "optional",
+                            "options": [
+                                "K02680"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "B12_DEPENDENCY",
+                    "name": "B12 dependence marker enzymes",
+                    "role": "dependency",
+                    "steps": [
+                        {
+                            "code": "B12.METH",
+                            "name": "B12-dependent methionine synthase (MetH)",
+                            "kind": "optional",
+                            "options": [
+                                "K00548"
+                            ]
+                        },
+                        {
+                            "code": "B12.NRDJ",
+                            "name": "Class II B12-dependent ribonucleotide reductase (NrdJ)",
+                            "kind": "optional",
+                            "options": [
+                                "K00526"
+                            ]
+                        },
+                        {
+                            "code": "B12.MUTAB",
+                            "name": "Methylmalonyl-CoA mutase (MutAB)",
+                            "kind": "optional",
+                            "options": [
+                                "K01847+K01848",
+                                "K01849"
+                            ]
+                        },
+                        {
+                            "code": "B12.EUTBC",
+                            "name": "Ethanolamine ammonia-lyase (EutBC)",
+                            "kind": "optional",
+                            "options": [
+                                "K04034+K04035"
+                            ]
+                        },
+                        {
+                            "code": "B12.PDUCDE",
+                            "name": "Propanediol dehydratase (PduCDE)",
+                            "kind": "optional",
+                            "options": [
+                                "K03396+K03397+K03398"
+                            ]
+                        },
+                        {
+                            "code": "B12.QUEG",
+                            "name": "Epoxyqueuosine reductase (QueG)",
+                            "kind": "optional",
+                            "options": [
+                                "K07567"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "rules": [
+                {
+                    "id": "B12.R1",
+                    "call": "PROTOTROPH",
+                    "if": {
+                        "any_of": [
+                            {
+                                "pathway": "B12_ANAEROBIC",
+                                "completeness_gte": 0.85,
+                                "key_coverage_eq": 1
+                            },
+                            {
+                                "pathway": "B12_AEROBIC",
+                                "completeness_gte": 0.85,
+                                "key_coverage_eq": 1
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "B12.R2",
+                    "call": "PRECURSOR_DEPENDENT",
+                    "reasons": [
+                        "Lacks de novo corrin ring synthesis but retains nucleotide loop and salvage machinery (cobinamide salvager)"
+                    ],
+                    "if": {
+                        "any_of": [
+                            {
+                                "pathway": "B12_ANAEROBIC",
+                                "key_coverage_lte": 0.25
+                            },
+                            {
+                                "pathway": "B12_AEROBIC",
+                                "key_coverage_lte": 0.25
+                            }
+                        ],
+                        "present": [
+                            "B12.COBS",
+                            "B12.COBU"
+                        ]
+                    }
+                },
+                {
+                    "id": "B12.R3",
+                    "call": "PROBABLE_PROTOTROPH",
+                    "if": {
+                        "completeness_gte": 0.6,
+                        "key_missing_lte": 2,
+                        "any_of": [
+                            {
+                                "key_missing_lte": 0
+                            },
+                            {
+                                "missing_key_has_alternative": true
+                            },
+                            {
+                                "genome_incomplete": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "B12.R4",
+                    "call": "BLOCKED",
+                    "if": {
+                        "completeness_gte": 0.35,
+                        "key_missing_gte": 1
+                    }
+                },
+                {
+                    "id": "B12.R5",
+                    "call": "NOT_REQUIRED",
+                    "reasons": [
+                        "No B12-dependent enzymes (MetH, NrdJ, MutAB, EutBC, PduCDE, QueG) detected in genome"
+                    ],
+                    "if": {
+                        "scope": "closed",
+                        "absent": [
+                            "B12.METH",
+                            "B12.NRDJ",
+                            "B12.MUTAB",
+                            "B12.EUTBC",
+                            "B12.PDUCDE",
+                            "B12.QUEG"
+                        ],
+                        "key_coverage_lte": 0.2
+                    }
+                },
+                {
+                    "id": "B12.R6",
+                    "call": "AUXOTROPH",
+                    "if": {
+                        "key_coverage_lte": 0.25,
+                        "scope": "closed"
+                    }
+                },
+                {
+                    "id": "B12.R7",
+                    "call": "NOT_ASSESSABLE",
+                    "if": {
+                        "scope": "open",
+                        "matched_steps_eq": 0
+                    }
+                },
+                {
+                    "id": "B12.R8",
+                    "call": "UNCERTAIN",
+                    "if": []
+                }
+            ],
+            "aliases": [
+                {
+                    "alias": "cbiK",
+                    "ko": "K02190",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cbiX",
+                    "ko": "K03795",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cbiL",
+                    "ko": "K03394",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cbiH",
+                    "ko": "K05934",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cbiF",
+                    "ko": "K05936",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cbiG",
+                    "ko": "K02189",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cbiD",
+                    "ko": "K02188",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cbiJ",
+                    "ko": "K05895",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cbiC",
+                    "ko": "K06042",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cbiA",
+                    "ko": "K02224",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cobI",
+                    "ko": "K03394",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cobG",
+                    "ko": "K02229",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cobJ",
+                    "ko": "K05934",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cobM",
+                    "ko": "K05936",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cobF",
+                    "ko": "K02228",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cobK",
+                    "ko": "K05895",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cobL",
+                    "ko": "K00595",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cobH",
+                    "ko": "K06042",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cobB",
+                    "ko": "K02224",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cobN",
+                    "ko": "K02230",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "cobS",
+                    "ko": "K02233",
+                    "naming": "generic",
+                    "note": "Late cobalamin synthase"
+                },
+                {
+                    "alias": "cobS",
+                    "ko": "K09882",
+                    "naming": "ecoli",
+                    "verify": true,
+                    "note": "Cobaltochelatase subunit in aerobic pathway"
+                },
+                {
+                    "alias": "cobT",
+                    "ko": "K00768",
+                    "naming": "generic",
+                    "note": "Late DMB phosphoribosyltransferase"
+                },
+                {
+                    "alias": "cobT",
+                    "ko": "K09883",
+                    "naming": "ecoli",
+                    "verify": true,
+                    "note": "Cobaltochelatase subunit in aerobic pathway"
+                },
+                {
+                    "alias": "cobA",
+                    "ko": "K02303",
+                    "naming": "generic",
+                    "note": "Aerobic methyltransferase"
+                },
+                {
+                    "alias": "cobA",
+                    "ko": "K19221",
+                    "naming": "salmonella",
+                    "verify": true,
+                    "note": "Corrinoid adenosyltransferase in Salmonella"
+                },
+                {
+                    "alias": "cobU",
+                    "ko": "K02231",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "btuB",
+                    "ko": "K02680",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "btuF",
+                    "ko": "K25034",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "btuC",
+                    "ko": "K25027",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "btuD",
+                    "ko": "K25028",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "metH",
+                    "ko": "K00548",
+                    "naming": "generic"
+                }
+            ]
+        },
+        {
+            "code": "K2",
+            "name": "Menaquinone",
+            "active_forms": "Menaquinone (MK-n), demethylmenaquinone (DMK)",
+            "summary": "Lipophilic electron carrier in bacterial respiratory electron transport chains. Synthesized via classical chorismate/o-succinylbenzoate pathway or futalosine pathways.",
+            "loci_k": 2,
+            "pathways": [
+                {
+                    "code": "K2_CLASSICAL",
+                    "name": "Menaquinone biosynthesis (classical pathway)",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00116"
+                    ],
+                    "loci_k": 2,
+                    "steps": [
+                        {
+                            "code": "K2.MENF",
+                            "name": "Isochorismate synthase (MenF)",
+                            "ec": "5.4.4.2",
+                            "kind": "normal",
+                            "options": [
+                                "K02552"
+                            ]
+                        },
+                        {
+                            "code": "K2.MEND",
+                            "name": "2-succinyl-5-enolpyruvyl-6-hydroxy-3-cyclohexene-1-carboxylate synthase (MenD)",
+                            "ec": "2.2.1.9",
+                            "kind": "key",
+                            "options": [
+                                "K02551"
+                            ]
+                        },
+                        {
+                            "code": "K2.MENH",
+                            "name": "2-succinyl-6-hydroxy-2,4-cyclohexadiene-1-carboxylate synthase (MenH)",
+                            "ec": "4.2.99.20",
+                            "kind": "normal",
+                            "options": [
+                                "K08680"
+                            ]
+                        },
+                        {
+                            "code": "K2.MENC",
+                            "name": "o-succinylbenzoate synthase (MenC)",
+                            "ec": "4.2.1.113",
+                            "kind": "normal",
+                            "options": [
+                                "K02549"
+                            ]
+                        },
+                        {
+                            "code": "K2.MENE",
+                            "name": "o-succinylbenzoate--CoA ligase (MenE)",
+                            "ec": "6.2.1.26",
+                            "kind": "normal",
+                            "options": [
+                                "K01911"
+                            ]
+                        },
+                        {
+                            "code": "K2.MENB",
+                            "name": "1,4-dihydroxy-2-naphthoyl-CoA synthase (MenB)",
+                            "ec": "4.1.3.36",
+                            "kind": "key",
+                            "options": [
+                                "K01661"
+                            ]
+                        },
+                        {
+                            "code": "K2.MENI",
+                            "name": "1,4-dihydroxy-2-naphthoyl-CoA hydrolase (MenI)",
+                            "ec": "3.1.2.28",
+                            "kind": "gap",
+                            "options": [
+                                "K19222"
+                            ],
+                            "note": "Replaced by thioesterases in many bacteria; never penalized."
+                        },
+                        {
+                            "code": "K2.MENA",
+                            "name": "1,4-dihydroxy-2-naphthoate polyprenyltransferase (MenA)",
+                            "ec": "2.5.1.74",
+                            "kind": "key",
+                            "options": [
+                                "K02548"
+                            ]
+                        },
+                        {
+                            "code": "K2.MENG",
+                            "name": "Demethylmenaquinone methyltransferase (MenG / UbiE)",
+                            "ec": "2.1.1.163",
+                            "kind": "low",
+                            "options": [
+                                "K03183"
+                            ],
+                            "note": "Shared with ubiquinone biosynthesis."
+                        }
+                    ]
+                },
+                {
+                    "code": "K2_FUTALOSINE",
+                    "name": "Menaquinone biosynthesis (futalosine pathway)",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00930"
+                    ],
+                    "loci_k": 2,
+                    "steps": [
+                        {
+                            "code": "K2.MQNA",
+                            "name": "Futalosine synthase (MqnA)",
+                            "ec": "2.5.1.120",
+                            "kind": "key",
+                            "options": [
+                                "K11782"
+                            ]
+                        },
+                        {
+                            "code": "K2.MQNE",
+                            "name": "Futalosine hydrolase (MqnE)",
+                            "ec": "3.2.2.26",
+                            "kind": "normal",
+                            "options": [
+                                "K18285"
+                            ]
+                        },
+                        {
+                            "code": "K2.MQNB",
+                            "name": "Dehypoxanthine futalosine deaminase",
+                            "ec": "3.5.4.40",
+                            "kind": "normal",
+                            "options": [
+                                "K18286",
+                                "K20810"
+                            ]
+                        },
+                        {
+                            "code": "K2.MQNC",
+                            "name": "Cyclic dehypoxanthine futalosine synthase (MqnC)",
+                            "ec": "1.21.98.1",
+                            "kind": "key",
+                            "options": [
+                                "K11784"
+                            ]
+                        },
+                        {
+                            "code": "K2.MQND",
+                            "name": "1,4-dihydroxy-6-naphthoate synthase (MqnD)",
+                            "ec": "4.2.1.152",
+                            "kind": "key",
+                            "options": [
+                                "K11785"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "code": "K2_MOD_FUTALOSINE",
+                    "name": "Menaquinone biosynthesis (modified futalosine pathway)",
+                    "role": "de_novo",
+                    "kegg_modules": [
+                        "M00931"
+                    ],
+                    "loci_k": 2,
+                    "steps": [
+                        {
+                            "code": "K2.MQNA",
+                            "name": "Futalosine synthase (MqnA)",
+                            "ec": "2.5.1.120",
+                            "kind": "key",
+                            "options": [
+                                "K11782"
+                            ]
+                        },
+                        {
+                            "code": "K2.MQNE",
+                            "name": "Futalosine hydrolase (MqnE)",
+                            "ec": "3.2.2.26",
+                            "kind": "normal",
+                            "options": [
+                                "K18285"
+                            ]
+                        },
+                        {
+                            "code": "K2.MQNX",
+                            "name": "Adenosylhypoxanthine nucleosidase",
+                            "ec": "3.2.2.33",
+                            "kind": "normal",
+                            "options": [
+                                "K18284"
+                            ]
+                        },
+                        {
+                            "code": "K2.MQNC",
+                            "name": "Cyclic dehypoxanthine futalosine synthase (MqnC)",
+                            "ec": "1.21.98.1",
+                            "kind": "key",
+                            "options": [
+                                "K11784"
+                            ]
+                        },
+                        {
+                            "code": "K2.MQND",
+                            "name": "1,4-dihydroxy-6-naphthoate synthase (MqnD)",
+                            "ec": "4.2.1.152",
+                            "kind": "key",
+                            "options": [
+                                "K11785"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "rules": [
+                {
+                    "id": "K2.R1",
+                    "call": "PROTOTROPH",
+                    "if": {
+                        "any_of": [
+                            {
+                                "pathway": "K2_CLASSICAL",
+                                "completeness_gte": 0.85,
+                                "key_coverage_eq": 1
+                            },
+                            {
+                                "pathway": "K2_FUTALOSINE",
+                                "completeness_gte": 0.85,
+                                "key_coverage_eq": 1
+                            },
+                            {
+                                "pathway": "K2_MOD_FUTALOSINE",
+                                "completeness_gte": 0.85,
+                                "key_coverage_eq": 1
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "K2.R2",
+                    "call": "PROBABLE_PROTOTROPH",
+                    "if": {
+                        "completeness_gte": 0.6,
+                        "key_missing_lte": 1,
+                        "any_of": [
+                            {
+                                "key_missing_lte": 0
+                            },
+                            {
+                                "missing_key_has_alternative": true
+                            },
+                            {
+                                "genome_incomplete": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "K2.R3",
+                    "call": "BLOCKED",
+                    "if": {
+                        "completeness_gte": 0.4,
+                        "key_missing_gte": 1
+                    }
+                },
+                {
+                    "id": "K2.R4",
+                    "call": "NOT_REQUIRED",
+                    "reasons": [
+                        "No menaquinone pathway detected; organism likely utilizes ubiquinone, plastoquinone, or ferredoxin-based non-respiratory energy metabolism."
+                    ],
+                    "if": {
+                        "key_coverage_lte": 0.25,
+                        "scope": "closed"
+                    }
+                },
+                {
+                    "id": "K2.R5",
+                    "call": "NOT_ASSESSABLE",
+                    "if": {
+                        "scope": "open",
+                        "matched_steps_eq": 0
+                    }
+                },
+                {
+                    "id": "K2.R6",
+                    "call": "UNCERTAIN",
+                    "if": []
+                }
+            ],
+            "aliases": [
+                {
+                    "alias": "menF",
+                    "ko": "K02552",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "menD",
+                    "ko": "K02551",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "menH",
+                    "ko": "K08680",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "menC",
+                    "ko": "K02549",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "menE",
+                    "ko": "K01911",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "menB",
+                    "ko": "K01661",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "menI",
+                    "ko": "K19222",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "menA",
+                    "ko": "K02548",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "menG",
+                    "ko": "K03183",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "ubiE",
+                    "ko": "K03183",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "mqnA",
+                    "ko": "K11782",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "mqnE",
+                    "ko": "K18285",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "mqnC",
+                    "ko": "K11784",
+                    "naming": "generic"
+                },
+                {
+                    "alias": "mqnD",
+                    "ko": "K11785",
+                    "naming": "generic"
+                }
+            ]
+        }
+    ]
+}

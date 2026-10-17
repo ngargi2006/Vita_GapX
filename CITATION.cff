@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software in academic research, please cite it as below."
+authors:
+  - name: "Vita-Gap Development Team"
+title: "Vita-Gap: Genome-Based Vitamin Pathway Gap Analysis for Bacteria"
+version: 1.0.0
+date-released: 2026-10-14
+url: "https://github.com/vitagap/vita-gap"
+license: MIT
+keywords:
+  - bioinformatics
+  - microbiome
+  - vitamin biosynthesis
+  - metabolic modeling
+  - KEGG orthology
+  - bacterial metabolism
+  - microbial ecology

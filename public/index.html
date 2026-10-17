@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vita-Gap — Genome-Based Vitamin Pathway Gap Analysis</title>
+  <meta name="description" content="Research-grade bacterial vitamin biosynthesis pathway gap analysis and phenotype prediction across 9 essential vitamins.">
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+        <span>Vita-Gap</span>
+        <span class="brand-badge">v1.0</span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="/" class="nav-link active">Home</a></li>
+        <li><a href="/analyze.html" class="nav-link">Analyze</a></li>
+        <li><a href="/library.html" class="nav-link">Pathway Library</a></li>
+        <li><a href="/methods.html" class="nav-link">Methods</a></li>
+        <li><a href="/api.html" class="nav-link">API</a></li>
+        <li><a href="/about.html" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="theme-toggle-btn" class="btn-icon" aria-label="Toggle theme">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          </svg>
+        </button>
+        <a href="/analyze.html" class="btn btn-primary">Start Analysis</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <main class="container">
+    <section class="hero">
+      <h1 class="hero-title">
+        Genome-Based <span class="hero-highlight">Vitamin Pathway</span> Gap Analysis for Bacteria
+      </h1>
+      <p class="hero-subtitle">
+        Assess whether a bacterium harbors the genetic repertoire required to synthesize 9 essential vitamins: 
+        <strong>B1, B2, B3, B5, B6, B7, B9, B12, and K2</strong>. Calibrated against KEGG Orthology, committed steps, and known biological gaps.
+      </p>
+
+      <div class="hero-actions">
+        <a href="/analyze.html" class="btn btn-primary" style="padding:0.75rem 1.5rem; font-size:1rem;">
+          Run Gap Analysis
+        </a>
+        <a href="/library.html" class="btn btn-secondary" style="padding:0.75rem 1.5rem; font-size:1rem;">
+          Explore Pathways
+        </a>
+      </div>
+    </section>
+
+    <!-- 1-Click Demos Strip -->
+    <section class="demo-strip">
+      <div class="demo-title">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span>Instant 1-Click Demos</span>
+      </div>
+      <div class="demo-buttons">
+        <a href="/analyze.html?demo=note" class="btn btn-outline btn-sm">
+          <strong>Note Example</strong> (RibA → RibB → RibD → RibH)
+        </a>
+        <a href="/analyze.html?demo=eco" class="btn btn-outline btn-sm">
+          <em>Escherichia coli</em> K-12
+        </a>
+        <a href="/analyze.html?demo=bsu" class="btn btn-outline btn-sm">
+          <em>Bacillus subtilis</em> 168
+        </a>
+        <a href="/analyze.html?demo=mge" class="btn btn-outline btn-sm">
+          <em>Mycoplasma genitalium</em> G37
+        </a>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="grid-3">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+          </svg>
+        </div>
+        <h2 class="feature-title">Ambiguity-Aware Matching</h2>
+        <p class="feature-desc">
+          Resolves conflicting gene symbols across species traditions (e.g. <code>ribA</code>, <code>ribC</code>, <code>ribE</code>, <code>cobS</code>). Prioritizes KEGG Orthology (KO) IDs with automated paralog warnings.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <h2 class="feature-title">Signature Metro Maps</h2>
+        <p class="feature-desc">
+          Interactive SVG pathway diagrams tracing metabolic branches, convergence junctions, and subunit complexes with instant in silico verification hints and wet-lab validation assays.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
+        <h2 class="feature-title">Calibrated Evidence Scoring</h2>
+        <p class="feature-desc">
+          Scores (0–100) are dynamically discounted for incomplete genomes (MAGs) and open-world input lists. Automatically authors reproducible Methods paragraphs for publications.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div>
+        <strong>Vita-Gap</strong> · Genome-based vitamin pathway gap analysis for bacteria · Spec v1.0
+      </div>
+      <div>
+        <a href="/methods.html">Methods</a> · 
+        <a href="/api.html">API</a> · 
+        <a href="/about.html">About & Citation</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { initTheme } from '/assets/js/ui.js';
+    initTheme();
+  </script>
+</body>
+</html>

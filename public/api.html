@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Reference & Console — Vita-Gap</title>
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+        <span>Vita-Gap</span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/analyze.html" class="nav-link">Analyze</a></li>
+        <li><a href="/library.html" class="nav-link">Pathway Library</a></li>
+        <li><a href="/methods.html" class="nav-link">Methods</a></li>
+        <li><a href="/api.html" class="nav-link active">API</a></li>
+        <li><a href="/about.html" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="theme-toggle-btn" class="btn-icon" aria-label="Toggle theme"></button>
+        <a href="/analyze.html" class="btn btn-primary btn-sm">Start Analysis</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container" style="max-width:960px;">
+    <header style="margin-bottom:2rem;">
+      <h1 style="font-size:2rem; font-weight:800; margin-bottom:0.5rem;">REST API Reference</h1>
+      <p style="color:var(--text-secondary); font-size:1.05rem;">
+        Vita-Gap exposes an open JSON API for automated bioinformatic workflows, pipeline integration, and permalink sharing.
+      </p>
+    </header>
+
+    <!-- Interactive Console Test Strip -->
+    <section class="demo-strip" style="margin-top:0;">
+      <div class="demo-title">Quick Live API Test</div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1rem;">
+        <button id="btn-test-health" class="btn btn-secondary btn-sm">GET /api/health</button>
+        <button id="btn-test-vitamins" class="btn btn-secondary btn-sm">GET /api/vitamins</button>
+        <button id="btn-test-lookup" class="btn btn-secondary btn-sm">GET /api/lookup?q=ribC</button>
+      </div>
+      <pre id="api-output" style="background:var(--bg-subtle); padding:1rem; border-radius:var(--radius-md); max-height:260px; overflow-y:auto; font-size:0.85rem; border:1px solid var(--border-color);">Click an endpoint above to view live response...</pre>
+    </section>
+
+    <!-- Endpoints Documentation Table -->
+    <div class="table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="chip chip-prototroph" style="font-size:0.7rem;">GET</span></td>
+            <td><code>/api/health</code></td>
+            <td>Liveness check, service health, and software versions.</td>
+          </tr>
+          <tr>
+            <td><span class="chip chip-prototroph" style="font-size:0.7rem;">GET</span></td>
+            <td><code>/api/vitamins</code></td>
+            <td>Catalog of all 9 bacterial vitamins and their pathways.</td>
+          </tr>
+          <tr>
+            <td><span class="chip chip-prototroph" style="font-size:0.7rem;">GET</span></td>
+            <td><code>/api/pathways/{code}</code></td>
+            <td>Specific pathway definition, reactions, and KO options.</td>
+          </tr>
+          <tr>
+            <td><span class="chip chip-prototroph" style="font-size:0.7rem;">GET</span></td>
+            <td><code>/api/lookup?q={query}&naming={convention}</code></td>
+            <td>Symbol / KO / EC lookup and ambiguity inspection.</td>
+          </tr>
+          <tr>
+            <td><span class="chip chip-blocked" style="font-size:0.7rem;">POST</span></td>
+            <td><code>/api/parse</code></td>
+            <td>Dry-run parsing: token extraction and ambiguity detection.</td>
+          </tr>
+          <tr>
+            <td><span class="chip chip-blocked" style="font-size:0.7rem;">POST</span></td>
+            <td><code>/api/analyze</code></td>
+            <td>Full pathway analysis answering Q1–Q5 (in-memory).</td>
+          </tr>
+          <tr>
+            <td><span class="chip chip-blocked" style="font-size:0.7rem;">POST</span></td>
+            <td><code>/api/analyses</code></td>
+            <td>Save analysis report and generate shareable permalink.</td>
+          </tr>
+          <tr>
+            <td><span class="chip chip-prototroph" style="font-size:0.7rem;">GET</span></td>
+            <td><code>/api/analyses/{share_token}</code></td>
+            <td>Retrieve a previously saved analysis report.</td>
+          </tr>
+          <tr>
+            <td><span class="chip chip-auxotroph" style="font-size:0.7rem;">DELETE</span></td>
+            <td><code>/api/analyses/{share_token}</code></td>
+            <td>Delete a saved analysis report (requires delete token).</td>
+          </tr>
+          <tr>
+            <td><span class="chip chip-prototroph" style="font-size:0.7rem;">GET</span></td>
+            <td><code>/api/export/{share_token}.json</code></td>
+            <td>Download saved report as JSON attachment.</td>
+          </tr>
+          <tr>
+            <td><span class="chip chip-prototroph" style="font-size:0.7rem;">GET</span></td>
+            <td><code>/api/export/{share_token}.csv</code></td>
+            <td>Download saved report as CSV spreadsheet.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div>Vita-Gap · REST API Documentation</div>
+      <div><a href="/methods.html">Methods</a> · <a href="/about.html">About</a></div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { api } from '/assets/js/api.js';
+    import { initTheme } from '/assets/js/ui.js';
+
+    initTheme();
+
+    const output = document.getElementById('api-output');
+
+    document.getElementById('btn-test-health')?.addEventListener('click', async () => {
+      output.textContent = 'Loading...';
+      const res = await api.getHealth();
+      output.textContent = JSON.stringify(res, null, 2);
+    });
+
+    document.getElementById('btn-test-vitamins')?.addEventListener('click', async () => {
+      output.textContent = 'Loading...';
+      const res = await api.getVitamins();
+      output.textContent = JSON.stringify(res, null, 2);
+    });
+
+    document.getElementById('btn-test-lookup')?.addEventListener('click', async () => {
+      output.textContent = 'Loading...';
+      const res = await api.lookup('ribC', 'generic');
+      output.textContent = JSON.stringify(res, null, 2);
+    });
+  </script>
+</body>
+</html>

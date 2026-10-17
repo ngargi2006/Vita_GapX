@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Mode & Cross-Feeding Network — Vita-Gap</title>
+  <link rel="stylesheet" href="/assets/css/app.css">
+  <!-- Cytoscape.js CDN for Directed Network Visualization -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.2/cytoscape.min.js"></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+        <span>Vita-Gap</span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/analyze.html" class="nav-link">Analyze</a></li>
+        <li><a href="/compare.html" class="nav-link active">Community Mode</a></li>
+        <li><a href="/library.html" class="nav-link">Pathway Library</a></li>
+        <li><a href="/methods.html" class="nav-link">Methods</a></li>
+        <li><a href="/api.html" class="nav-link">API</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="theme-toggle-btn" class="btn-icon" aria-label="Toggle theme"></button>
+        <a href="/analyze.html" class="btn btn-primary btn-sm">Single Genome</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <header style="margin-bottom:2rem;">
+      <h1 style="font-size:2.2rem; font-weight:800; margin-bottom:0.5rem;">
+        Community Mode: <span class="hero-highlight">The Vitamin Economy</span>
+      </h1>
+      <p style="color:var(--text-secondary); max-width:860px; font-size:1.05rem; line-height:1.6;">
+        Compare up to 50 microbial genomes concurrently. Visualize vitamin biosynthesis autonomy heatmaps, community-level sharing capabilities, and directed metabolic cross-feeding networks.
+      </p>
+    </header>
+
+    <!-- Batch Submission Card -->
+    <div class="wizard-card" style="margin-bottom:2.5rem;">
+      <div style="padding:1.5rem; background:var(--bg-subtle); border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+        <div>
+          <h2 style="font-size:1.15rem; font-weight:700;">Multi-Genome Batch Input</h2>
+          <div style="font-size:0.85rem; color:var(--text-muted);">
+            Paste JSON array or multi-genome FASTA blocks with <code>&gt;Genome_Name</code> headers.
+          </div>
+        </div>
+        <button type="button" id="btn-load-community-demo" class="btn btn-outline btn-sm">
+          Load Gut Synthetic Community Demo (5 Genomes)
+        </button>
+      </div>
+
+      <form id="compare-form" style="padding:1.75rem;">
+        <div class="form-group">
+          <label class="form-label" for="community-name">Community / Cohort Name</label>
+          <input type="text" id="community-name" class="form-control" placeholder="e.g. Human Gut Synthetic Consortium, Bioreactor Microbiome">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="batch-data">Multi-Genome Annotations</label>
+          <textarea id="batch-data" class="form-control" style="min-height:220px;" placeholder=">Bacteroides_theta&#10;RibA, RibB, RibD, RibH, RibE, PanB, PanC, ThiC, ThiE, ThiG, CobS, CobU, BtuC, BtuD&#10;&#10;>Faecalibacterium_prausnitzii&#10;PanB, PanC, PdxS, PdxT, ThiT, BioY&#10;&#10;>Eubacterium_rectale&#10;PanB, PanC, FolA, FolC, FolE, FolP, RibU, ThiT"></textarea>
+          <div class="form-hint">Up to 50 genomes per community analysis.</div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end;">
+          <button type="submit" id="btn-run-batch" class="btn btn-primary" style="padding:0.75rem 1.5rem;">
+            Run Community Comparison
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Results Section (Hidden until submitted or loaded) -->
+    <section id="community-results" style="display:none;">
+      <!-- Summary Bar -->
+      <div id="community-summary-header" class="methods-box" style="margin-top:0; margin-bottom:2rem;"></div>
+
+      <!-- 1. Heatmap Section -->
+      <div class="vitamin-card">
+        <div class="vitamin-header">
+          <div class="vitamin-title">
+            <span>Community Autonomy Heatmap</span>
+          </div>
+          <button id="btn-export-batch-csv" class="btn btn-outline btn-sm">Download Heatmap CSV</button>
+        </div>
+        <div id="heatmap-container" class="table-wrapper"></div>
+      </div>
+
+      <!-- 2. Cytoscape Cross-Feeding Network Section -->
+      <div class="vitamin-card">
+        <div class="vitamin-header">
+          <div class="vitamin-title">
+            <span>Vitamin Cross-Feeding Network</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:0.75rem;">
+            <label style="font-size:0.85rem; font-weight:600;">
+              Filter Vitamin:
+              <select id="network-vitamin-filter" class="form-control" style="display:inline-block; width:auto; padding:0.3rem 0.6rem; font-size:0.85rem;">
+                <option value="ALL">All Vitamins</option>
+                <option value="B1">B1 (Thiamine)</option>
+                <option value="B2">B2 (Riboflavin)</option>
+                <option value="B3">B3 (Niacin / NAD)</option>
+                <option value="B5">B5 (Pantothenate)</option>
+                <option value="B6">B6 (PLP)</option>
+                <option value="B7">B7 (Biotin)</option>
+                <option value="B9">B9 (Folate)</option>
+                <option value="B12">B12 (Cobalamin)</option>
+                <option value="K2">K2 (Menaquinone)</option>
+              </select>
+            </label>
+            <button id="btn-export-graphml" class="btn btn-outline btn-sm">Download GraphML</button>
+          </div>
+        </div>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">
+          Directed arrows indicate predicted nutrient flow from Producer species to Auxotrophic Consumers. Thick magenta edges represent verified active uptake/transporter machinery in the receiving species.
+        </p>
+        <div id="cy-network" style="height:480px; width:100%; border:1px solid var(--border-color); border-radius:var(--radius-md); background:var(--bg-subtle);"></div>
+      </div>
+
+      <!-- 3. Community Coverage Table -->
+      <div class="vitamin-card">
+        <div class="vitamin-header">
+          <div class="vitamin-title">
+            <span>Community Vitamin Autonomy Coverage</span>
+          </div>
+        </div>
+        <div id="coverage-table-container"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div>Vita-Gap · Community Mode (Cytoscape.js & Network Science)</div>
+      <div>
+        <a href="/methods.html">Methods</a> · 
+        <a href="/api.html">API</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { initTheme } from '/assets/js/ui.js';
+    import { CompareController } from '/assets/js/compare.js';
+
+    initTheme();
+    new CompareController();
+  </script>
+</body>
+</html>

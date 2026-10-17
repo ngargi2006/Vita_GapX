@@ -1,0 +1,18 @@
+# Environment & local secrets
+.env
+.env.local
+
+# Cache and logs
+var/*
+!var/.gitkeep
+
+# Composer vendor (if used)
+vendor/
+composer.phar
+
+# macOS metadata
+.DS_Store
+
+# Temporary files
+*.tmp
+*.log

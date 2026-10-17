@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analysis Report — Vita-Gap</title>
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+        <span>Vita-Gap</span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/analyze.html" class="nav-link">New Analysis</a></li>
+        <li><a href="/library.html" class="nav-link">Pathway Library</a></li>
+        <li><a href="/methods.html" class="nav-link">Methods</a></li>
+        <li><a href="/api.html" class="nav-link">API</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="theme-toggle-btn" class="btn-icon" aria-label="Toggle theme"></button>
+        <a href="/analyze.html" class="btn btn-outline btn-sm">New Analysis</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Report Top Header -->
+    <header style="margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1.5rem;">
+      <div>
+        <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.4rem;">
+          <h1 id="report-organism" style="font-size:1.85rem; font-weight:800; line-height:1.2;">Loading report...</h1>
+          <span id="report-scope-badge" class="badge-scope-open">Scope</span>
+        </div>
+        <div id="report-versions" style="font-size:0.85rem; color:var(--text-muted); font-family:var(--font-mono);">
+          Vita-Gap v1.0.0
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
+        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; font-weight:600; cursor:pointer; margin-right:0.5rem;">
+          <input type="checkbox" id="toggle-expert">
+          <span>Expert Mode (KOs & ECs)</span>
+        </label>
+        <button id="btn-save" class="btn btn-primary btn-sm">Save Permalink</button>
+        <button id="btn-share" class="btn btn-secondary btn-sm">Share Link</button>
+        <button id="btn-export-json" class="btn btn-outline btn-sm">JSON</button>
+        <button id="btn-export-csv" class="btn btn-outline btn-sm">CSV</button>
+      </div>
+    </header>
+
+    <!-- 9-Cell Vitamin Barcode -->
+    <section class="barcode-wrapper">
+      <div class="barcode-title">Vitamin Biosynthesis Barcode</div>
+      <div id="vitamin-barcode" class="vitamin-barcode"></div>
+    </section>
+
+    <!-- Individual Vitamin Cards & Metro Maps -->
+    <section id="vitamin-cards"></section>
+
+    <!-- Auto-written Reproducible Methods Section -->
+    <section class="methods-box">
+      <div class="methods-header">
+        <h3 style="font-size:1.05rem; font-weight:700;">Reproducible Methods Statement (Ready to Cite)</h3>
+        <button id="btn-copy-methods" class="btn btn-secondary btn-sm">Copy Paragraph</button>
+      </div>
+      <p id="methods-text" class="methods-text">Generating citation text...</p>
+    </section>
+  </main>
+
+  <!-- Slide-Over Station Inspector Drawer -->
+  <div id="drawer-backdrop" class="drawer-backdrop"></div>
+  <aside id="station-drawer" class="drawer">
+    <div id="drawer-content"></div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div>Vita-Gap · Genome-based vitamin pathway gap analysis for bacteria</div>
+      <div>
+        <a href="/methods.html">Methods</a> · 
+        <a href="/api.html">API</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { initTheme } from '/assets/js/ui.js';
+    import { ReportView } from '/assets/js/report.js';
+
+    initTheme();
+    new ReportView();
+  </script>
+</body>
+</html>

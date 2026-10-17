@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About & Citation — Vita-Gap</title>
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+        <span>Vita-Gap</span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/analyze.html" class="nav-link">Analyze</a></li>
+        <li><a href="/library.html" class="nav-link">Pathway Library</a></li>
+        <li><a href="/methods.html" class="nav-link">Methods</a></li>
+        <li><a href="/api.html" class="nav-link">API</a></li>
+        <li><a href="/about.html" class="nav-link active">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="theme-toggle-btn" class="btn-icon" aria-label="Toggle theme"></button>
+        <a href="/analyze.html" class="btn btn-primary btn-sm">Start Analysis</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container" style="max-width:880px;">
+    <header style="margin-bottom:2rem;">
+      <h1 style="font-size:2.2rem; font-weight:800; margin-bottom:0.75rem;">About Vita-Gap</h1>
+      <p style="color:var(--text-secondary); font-size:1.1rem; line-height:1.6;">
+        An open-source bioinformatics platform for assessing bacterial micronutrient autonomy and microbial metabolic cross-feeding.
+      </p>
+    </header>
+
+    <article style="display:flex; flex-direction:column; gap:2rem; line-height:1.7; color:var(--text-secondary);">
+      <section>
+        <h2 style="color:var(--text-main); font-size:1.3rem; margin-bottom:0.5rem;">Mission</h2>
+        <p>
+          B-vitamins and vitamin K2 play foundational catalytic roles across all kingdoms of life. Yet in complex microbial communities such as the human gut microbiome or soil ecosystems, many bacteria lack de novo synthesis pathways and rely on metabolic cross-feeding from neighboring species. Vita-Gap was engineered to distinguish true auxotrophs from organisms with unannotated phosphatase gaps, alternative biosynthetic routes, or fragmented draft assemblies.
+        </p>
+      </section>
+
+      <section>
+        <h2 style="color:var(--text-main); font-size:1.3rem; margin-bottom:0.5rem;">Citing Vita-Gap</h2>
+        <p>If you use Vita-Gap in academic or industrial research, please cite:</p>
+        <pre style="background:var(--bg-subtle); padding:1rem; border-radius:var(--radius-md); font-size:0.85rem; border:1px solid var(--border-color); overflow-x:auto;">
+@software{vitagap2026,
+  author = {Vita-Gap Development Team},
+  title = {Vita-Gap: Genome-Based Vitamin Pathway Gap Analysis for Bacteria},
+  year = {2026},
+  version = {1.0.0},
+  url = {https://github.com/vitagap/vita-gap}
+}</pre>
+      </section>
+
+      <section>
+        <h2 style="color:var(--text-main); font-size:1.3rem; margin-bottom:0.5rem;">License</h2>
+        <p>
+          Vita-Gap is released as open-source software under the MIT License. KEGG pathway module definitions and orthology cross-references are used for academic and research purposes pursuant to KEGG REST guidelines.
+        </p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div>Vita-Gap · Open Source Microbial Bioinformatics</div>
+      <div><a href="/methods.html">Methods</a> · <a href="/api.html">API</a></div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { initTheme } from '/assets/js/ui.js';
+    initTheme();
+  </script>
+</body>
+</html>

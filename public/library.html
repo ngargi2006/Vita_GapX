@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathway Library — Vita-Gap</title>
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+        <span>Vita-Gap</span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/analyze.html" class="nav-link">Analyze</a></li>
+        <li><a href="/library.html" class="nav-link active">Pathway Library</a></li>
+        <li><a href="/methods.html" class="nav-link">Methods</a></li>
+        <li><a href="/api.html" class="nav-link">API</a></li>
+        <li><a href="/about.html" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="theme-toggle-btn" class="btn-icon" aria-label="Toggle theme"></button>
+        <a href="/analyze.html" class="btn btn-primary btn-sm">Start Analysis</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <header style="margin-bottom:2rem;">
+      <h1 style="font-size:2rem; font-weight:800; margin-bottom:0.5rem;">Curated Vitamin Pathway Library</h1>
+      <p style="color:var(--text-secondary); max-width:800px; font-size:1.05rem;">
+        Explore all 9 bacterial vitamin biosynthesis pathways, committed key steps, alternative variants (e.g. aerobic vs anaerobic B12, classical vs futalosine K2), and known biological bypasses.
+      </p>
+    </header>
+
+    <div id="library-container">Loading pathway catalog...</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div>Vita-Gap · Knowledge Base v1.0.0 (Release 112.0/Oct 2026)</div>
+      <div><a href="/methods.html">Methods</a> · <a href="/api.html">API</a></div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { api } from '/assets/js/api.js';
+    import { initTheme, escapeHtml } from '/assets/js/ui.js';
+
+    initTheme();
+
+    async function loadLibrary() {
+      const container = document.getElementById('library-container');
+      try {
+        const data = await api.getVitamins();
+        container.innerHTML = '';
+
+        data.vitamins.forEach(v => {
+          const section = document.createElement('section');
+          section.className = 'vitamin-card';
+          section.innerHTML = `
+            <div class="vitamin-header" style="margin-bottom:1rem;">
+              <div class="vitamin-title">
+                <span>${v.code}</span>
+                <span>${escapeHtml(v.name)}</span>
+              </div>
+              <span class="chip chip-not-required">Active Forms: ${escapeHtml(v.active_forms)}</span>
+            </div>
+            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.25rem;">
+              ${escapeHtml(v.summary || 'Biosynthetic pathway variants for bacterial synthesis and salvage.')}
+            </p>
+
+            <div style="display:flex; flex-direction:column; gap:0.75rem;">
+              ${v.pathways.map(p => `
+                <div style="background:var(--bg-subtle); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1rem;">
+                  <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                      <strong style="color:var(--brand-primary);">${p.code}</strong> — 
+                      <span style="font-weight:600;">${escapeHtml(p.name)}</span>
+                      <span class="badge-scope-open" style="margin-left:0.5rem; text-transform:uppercase;">${p.role}</span>
+                    </div>
+                    <span style="font-size:0.8rem; font-weight:700; color:var(--text-muted);">${p.step_count} Steps</span>
+                  </div>
+                  ${p.kegg_modules?.length ? `
+                    <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.4rem;">
+                      KEGG Modules: ${p.kegg_modules.map(m => `<code>${m}</code>`).join(', ')}
+                    </div>
+                  ` : ''}
+                </div>
+              `).join('')}
+            </div>
+          `;
+          container.appendChild(section);
+        });
+      } catch (err) {
+        container.innerHTML = `<p style="color:var(--call-blocked);">Failed to load library: ${escapeHtml(err.message)}</p>`;
+      }
+    }
+
+    loadLibrary();
+  </script>
+</body>
+</html>

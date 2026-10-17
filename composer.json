@@ -1,0 +1,22 @@
+{
+  "name": "vitagap/vitagap",
+  "description": "Genome-based vitamin pathway gap analysis for bacteria",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "VitaGap\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "VitaGap\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "php bin/test.php"
+  }
+}

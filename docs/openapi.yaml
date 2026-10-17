@@ -1,0 +1,209 @@
+openapi: 3.0.3
+info:
+  title: Vita-Gap API
+  description: Bacterial vitamin pathway gap analysis RESTful API
+  version: 1.0.0
+  contact:
+    name: Vita-Gap Support
+servers:
+  - url: http://localhost:8080/api
+    description: Local development server
+paths:
+  /health:
+    get:
+      summary: Health check
+      description: Returns API status, engine and KB versions, and system details.
+      responses:
+        '200':
+          description: Service is healthy
+  /vitamins:
+    get:
+      summary: List vitamins
+      description: Returns metadata and pathway lists for all 9 supported bacterial vitamins.
+      responses:
+        '200':
+          description: List of vitamins
+  /pathways/{code}:
+    get:
+      summary: Get pathway definition
+      parameters:
+        - name: code
+          in: path
+          required: true
+          schema:
+            type: string
+          example: B2_DENOVO
+      responses:
+        '200':
+          description: Pathway steps, EC numbers, and KEGG Orthology options
+        '404':
+          description: Pathway not found
+  /lookup:
+    get:
+      summary: Gene / KO / EC lookup
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema:
+            type: string
+          example: ribC
+        - name: naming
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [generic, ecoli, bsubtilis, other]
+            default: generic
+      responses:
+        '200':
+          description: Matching KOs and cross-convention ambiguities
+  /parse:
+    post:
+      summary: Dry-run token parse
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [data]
+              properties:
+                data:
+                  type: string
+                format:
+                  type: string
+                  default: auto
+                naming:
+                  type: string
+                  default: generic
+      responses:
+        '200':
+          description: Tokens and detected format
+  /analyze:
+    post:
+      summary: Run full pathway analysis
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [data]
+              properties:
+                organism:
+                  type: string
+                naming:
+                  type: string
+                  enum: [generic, ecoli, bsubtilis, other]
+                  default: generic
+                genome_type:
+                  type: string
+                  enum: [complete, draft, mag, unknown]
+                  default: unknown
+                completeness:
+                  type: number
+                  minimum: 0
+                  maximum: 100
+                scope:
+                  type: string
+                  enum: [open, closed]
+                  default: open
+                format:
+                  type: string
+                  default: auto
+                data:
+                  type: string
+                vitamins:
+                  type: array
+                  items:
+                    type: string
+                resolve:
+                  type: object
+                  additionalProperties:
+                    type: string
+      responses:
+        '200':
+          description: Full analysis report answering Q1-Q5
+        '400':
+          description: Invalid input parameters
+        '429':
+          description: Rate limit exceeded
+  /analyses:
+    post:
+      summary: Save analysis report
+      description: Runs analysis and stores results, returning permalink share and delete tokens.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [data]
+              properties:
+                organism:
+                  type: string
+                data:
+                  type: string
+                store_input:
+                  type: boolean
+                  default: false
+      responses:
+        '201':
+          description: Saved analysis tokens and report
+  /analyses/{share_token}:
+    get:
+      summary: Retrieve saved analysis
+      parameters:
+        - name: share_token
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Saved report data
+        '404':
+          description: Analysis not found
+    delete:
+      summary: Delete saved analysis
+      parameters:
+        - name: share_token
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Delete-Token
+          in: header
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully deleted
+        '404':
+          description: Invalid delete token or analysis not found
+  /export/{share_token}.json:
+    get:
+      summary: Export report as JSON file
+      parameters:
+        - name: share_token
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Downloadable JSON file
+  /export/{share_token}.csv:
+    get:
+      summary: Export report as CSV file
+      parameters:
+        - name: share_token
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Downloadable CSV spreadsheet

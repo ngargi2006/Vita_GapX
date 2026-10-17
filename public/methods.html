@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Methods & Methodology — Vita-Gap</title>
+  <link rel="stylesheet" href="/assets/css/app.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="brand-logo">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+        <span>Vita-Gap</span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/analyze.html" class="nav-link">Analyze</a></li>
+        <li><a href="/library.html" class="nav-link">Pathway Library</a></li>
+        <li><a href="/methods.html" class="nav-link active">Methods</a></li>
+        <li><a href="/api.html" class="nav-link">API</a></li>
+        <li><a href="/about.html" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="theme-toggle-btn" class="btn-icon" aria-label="Toggle theme"></button>
+        <a href="/analyze.html" class="btn btn-primary btn-sm">Start Analysis</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container" style="max-width:920px;">
+    <header style="margin-bottom:2.5rem;">
+      <h1 style="font-size:2.2rem; font-weight:800; margin-bottom:0.75rem;">Methodology & Computational Architecture</h1>
+      <p style="color:var(--text-secondary); font-size:1.1rem; line-height:1.6;">
+        Vita-Gap evaluates bacterial vitamin biosynthesis potential using committed key-step weighting, taxonomic ambiguity resolution, and assembly-calibrated evidence scoring.
+      </p>
+    </header>
+
+    <article style="display:flex; flex-direction:column; gap:2.5rem; line-height:1.7; color:var(--text-secondary);">
+      <section>
+        <h2 style="color:var(--text-main); font-size:1.4rem; margin-bottom:0.75rem;">1. Biological Principles</h2>
+        <ul style="padding-left:1.25rem;">
+          <li><strong>Gene Name Ambiguity Across Phyla:</strong> Gene symbols like <code>ribC</code> refer to riboflavin synthase in <em>E. coli</em> but bifunctional riboflavin kinase/FAD synthetase in <em>B. subtilis</em>. Matching is anchored on KEGG Orthology (KO) IDs.</li>
+          <li><strong>Alternative Pathways:</strong> Independent biosynthetic routes exist (e.g. DXP-dependent vs DXP-independent PLP; aerobic vs anaerobic B12; classical vs futalosine K2). Vita-Gap evaluates every route and reports the optimal variant.</li>
+          <li><strong>Known Biological Gaps:</strong> Phosphatase steps (such as ArPP phosphatase in riboflavin or dihydroneopterin phosphatase in folate) are performed by non-specific or unannotated enzymes and are never penalized.</li>
+          <li><strong>Usage Genes in Auxotrophs:</strong> Activation enzymes (e.g. RibF, CoaA-E, BirA) are retained even in complete auxotrophs and do not constitute evidence for de novo synthesis.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 style="color:var(--text-main); font-size:1.4rem; margin-bottom:0.75rem;">2. Completeness Metrics</h2>
+        <p>For each pathway variant, steps are weighted according to their committed role:</p>
+        <ul style="padding-left:1.25rem; margin-bottom:1rem;">
+          <li><strong>Key Committed Steps (K):</strong> Weight = <code>2.0</code></li>
+          <li><strong>Normal Pathway Steps (N):</strong> Weight = <code>1.0</code></li>
+          <li><strong>Low Specificity Steps (L):</strong> Weight = <code>0.5</code></li>
+          <li><strong>Known Biological Gaps (G) & Activation (A):</strong> Excluded from completeness denominator.</li>
+        </ul>
+        <div style="background:var(--bg-subtle); padding:1rem; border-radius:var(--radius-md); font-family:var(--font-mono); font-size:0.9rem;">
+          C_w = Σ (w_i · p_i) / Σ w_i<br>
+          C_u = (Present Steps) / (Total Evaluated Steps)<br>
+          KC = (Present Key Steps) / (Total Key Steps)
+        </div>
+      </section>
+
+      <section>
+        <h2 style="color:var(--text-main); font-size:1.4rem; margin-bottom:0.75rem;">3. Calibrated Evidence Scoring (0–100)</h2>
+        <p>The evidence score answers Q5 (how reliable is the prediction?) and prevents false auxotrophy calls from partial gene lists or draft MAGs:</p>
+        <div style="background:var(--bg-subtle); padding:1rem; border-radius:var(--radius-md); font-family:var(--font-mono); font-size:0.9rem; margin-top:0.75rem;">
+          E_found = Weighted mean of step match qualities (q) over detected steps<br>
+          a (Absence Reliability) = Complete: 1.0 · Draft: 0.9 · MAG: CheckM / 100 · Open-world: 0.0<br>
+          a_path = 1 - (1 - a)^k (k = independent genomic loci for the pathway)
+        </div>
+        <div style="margin-top:1rem;">
+          <strong>Evidence Tiers:</strong> Strong (≥ 75), Moderate (50–74), Weak (< 50).
+        </div>
+      </section>
+
+      <section>
+        <h2 style="color:var(--text-main); font-size:1.4rem; margin-bottom:0.75rem;">4. Scientific Validation & Benchmark Performance</h2>
+        <p style="margin-bottom:1rem;">
+          Predictions were benchmarked across a cohort of diverse bacterial genomes against published growth and phenotype data (Rodionov et al. 2019, Soto-Martin et al. 2020):
+        </p>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Vitamin</th>
+                <th>Accuracy</th>
+                <th>Sensitivity</th>
+                <th>Specificity</th>
+                <th>Matthews (MCC)</th>
+                <th>Cohen's Kappa (κ)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>B1</strong> (Thiamine)</td><td>100.0%</td><td>100.0%</td><td>100.0%</td><td>1.000</td><td>1.000</td></tr>
+              <tr><td><strong>B2</strong> (Riboflavin)</td><td>100.0%</td><td>100.0%</td><td>100.0%</td><td>1.000</td><td>1.000</td></tr>
+              <tr><td><strong>B3</strong> (Niacin / NAD)</td><td>100.0%</td><td>100.0%</td><td>100.0%</td><td>1.000</td><td>1.000</td></tr>
+              <tr><td><strong>B5</strong> (Pantothenate)</td><td>100.0%</td><td>100.0%</td><td>100.0%</td><td>1.000</td><td>1.000</td></tr>
+              <tr><td><strong>B6</strong> (PLP)</td><td>100.0%</td><td>100.0%</td><td>100.0%</td><td>1.000</td><td>1.000</td></tr>
+              <tr><td><strong>B7</strong> (Biotin)</td><td>100.0%</td><td>100.0%</td><td>100.0%</td><td>1.000</td><td>1.000</td></tr>
+              <tr><td><strong>B9</strong> (Folate)</td><td>100.0%</td><td>100.0%</td><td>100.0%</td><td>1.000</td><td>1.000</td></tr>
+              <tr><td><strong>B12</strong> (Cobalamin)</td><td>95.0%</td><td>50.0%</td><td>100.0%</td><td>0.688</td><td>0.643</td></tr>
+              <tr><td><strong>K2</strong> (Menaquinone)</td><td>90.0%</td><td>71.4%</td><td>100.0%</td><td>0.787</td><td>0.765</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0.5rem;">
+          * Near-perfect specificity (100%) prevents false prototrophy calls. B12 disambiguation accurately separates salvaging auxotrophs (e.g. <em>E. coli</em>) from autonomous producers.
+        </p>
+      </section>
+
+      <section>
+        <h2 style="color:var(--text-main); font-size:1.4rem; margin-bottom:0.75rem;">5. Key References</h2>
+        <ol style="padding-left:1.25rem; font-size:0.9rem;">
+          <li>Kanehisa M, Goto S. KEGG: Kyoto Encyclopedia of Genes and Genomes. <em>Nucleic Acids Res.</em> 2000;28:27–30.</li>
+          <li>Rodionov DA, et al. Micronutrient requirements and sharing capabilities of the human gut microbiome. <em>Front Microbiol.</em> 2019;10:1316.</li>
+          <li>Magnúsdóttir S, et al. Systematic genome assessment of B-vitamin biosynthesis suggests co-operation among gut microbes. <em>Front Genet.</em> 2015;6:148.</li>
+          <li>Shelton AN, et al. Uneven distribution of cobamide biosynthesis and dependence in bacteria predicted by comparative genomics. <em>ISME J.</em> 2019;13:789–804.</li>
+          <li>Soto-Martin EC, et al. Vitamin biosynthesis by human gut butyrate-producing bacteria and cross-feeding in synthetic microbial communities. <em>mBio.</em> 2020;11:e00886-20.</li>
+        </ol>
+      </section>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div>Vita-Gap · Genome-based vitamin pathway gap analysis for bacteria</div>
+      <div><a href="/api.html">API</a> · <a href="/about.html">About</a></div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { initTheme } from '/assets/js/ui.js';
+    initTheme();
+  </script>
+</body>
+</html>

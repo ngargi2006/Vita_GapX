@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  web:
+    image: php:8.3-apache
+    container_name: vitagap_web
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      APACHE_DOCUMENT_ROOT: /var/www/html/public
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: vitagap
+      DB_USER: vitagap_user
+      DB_PASS: vitagap_secret
+    command: >
+      bash -c "sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf
+      && sed -ri -e 's!/var/www/!/var/www/html/public!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+      && a2enmod rewrite headers
+      && docker-php-ext-install pdo pdo_mysql opcache
+      && apache2-foreground"
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: vitagap_db
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root_secret
+      MYSQL_DATABASE: vitagap
+      MYSQL_USER: vitagap_user
+      MYSQL_PASSWORD: vitagap_secret
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  mysql_data:
