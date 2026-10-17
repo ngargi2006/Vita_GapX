@@ -1,12 +1,12 @@
-# Vita-Gap — Bacterial Vitamin Pathway Gap Analysis
+# Vita-GapX — Bacterial Vitamin Pathway Gap Analysis
 
 ## Overview
 
-Vita-Gap is a bioinformatics web application designed to analyze vitamin biosynthesis pathways in bacteria using gene annotation data. Its primary goal is to help researchers understand whether a bacterial genome appears to contain the genes required to synthesize essential vitamins or whether certain steps in the biosynthesis pathways may be missing.
+Vita-GapX is a bioinformatics web application designed to analyze vitamin biosynthesis pathways in bacteria using gene annotation data. Its primary goal is to help researchers understand whether a bacterial genome appears to contain the genes required to synthesize essential vitamins or whether certain steps in the biosynthesis pathways may be missing.
 
 The application focuses on nine vitamins: **B1 (Thiamine), B2 (Riboflavin), B3 (Niacin), B5 (Pantothenate), B6 (Pyridoxine), B7 (Biotin), B9 (Folate), B12 (Cobalamin), and K2 (Menaquinone).**
 
-By comparing annotated genes with curated pathway information, Vita-Gap identifies detected and missing pathway steps, estimates pathway completeness, and generates evidence-based predictions about a bacterium's potential to synthesize each vitamin.
+By comparing annotated genes with curated pathway information, Vita-GapX identifies detected and missing pathway steps, estimates pathway completeness, and generates evidence-based predictions about a bacterium's potential to synthesize each vitamin.
 
 ## Key Features
 
@@ -24,7 +24,7 @@ By comparing annotated genes with curated pathway information, Vita-Gap identifi
 ## How It Works
 
 1. **Input:** The user provides bacterial gene annotations, such as a list of gene symbols, KO identifiers, or supported annotation files.
-2. **Parsing:** Vita-Gap identifies the input format and extracts recognizable gene, KO, and EC identifiers.
+2. **Parsing:** Vita-GapX identifies the input format and extracts recognizable gene, KO, and EC identifiers.
 3. **Gene Matching:** The extracted identifiers are compared with the curated knowledge base, accounting for naming differences and alternative enzymes.
 4. **Pathway Evaluation:** The application checks detected and missing steps, calculates pathway completeness, and evaluates relevant biosynthesis routes.
 5. **Prediction:** A rule-based analysis engine generates a result for each vitamin and assigns an evidence score.
@@ -39,9 +39,9 @@ By comparing annotated genes with curated pathway information, Vita-Gap identifi
 
 ## Scientific Significance
 
-Vita-Gap aims to make microbial vitamin metabolism easier to investigate by translating gene annotation data into understandable pathway-level results. It can support comparative microbial genomics, exploratory bioinformatics research, and investigations into bacterial vitamin biosynthesis potential.
+Vita-GapX aims to make microbial vitamin metabolism easier to investigate by translating gene annotation data into understandable pathway-level results. It can support comparative microbial genomics, exploratory bioinformatics research, and investigations into bacterial vitamin biosynthesis potential.
 
-Importantly, gene presence does not guarantee gene expression, vitamin production, or bacterial growth under particular conditions. Similarly, a missing gene in a partial annotation does not necessarily prove that the organism lacks the corresponding function. Vita-Gap is designed to communicate these limitations alongside its predictions.
+Importantly, gene presence does not guarantee gene expression, vitamin production, or bacterial growth under particular conditions. Similarly, a missing gene in a partial annotation does not necessarily prove that the organism lacks the corresponding function. Vita-GapX is designed to communicate these limitations alongside its predictions.
 
 ## Project Status
 
